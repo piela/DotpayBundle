@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
+{% block content %}
+    <h1>Dotpay payment status</h1>
+    {{ form_start(form) }}
+    <input type="submit" value="Send" class="btn btn-default"/>
+    {{ form_end(form) }}
+{% endblock %}
+

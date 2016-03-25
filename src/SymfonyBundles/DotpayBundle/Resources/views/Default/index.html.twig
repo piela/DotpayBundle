@@ -1,0 +1,18 @@
+{%  form_theme form "bootstrap_3_layout.html.twig" %}
+<html>
+<head>
+    <title>Dotpay Bundle</title>
+    <link href="{{ asset("bower_components/bootstrap/dist/css/bootstrap.min.css") }}" rel="stylesheet" />
+    <script type="text/javascript" src="{{ asset("bower_components/jquery/dist/jquery.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bower_components/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Dotpay</h1>
+    {{ form_start(form) }}
+    <input type="submit" value="Send" class="btn btn-default" />
+    {{  form_end(form) }}
+</div>
+</body>
+</html>
+
