@@ -1,8 +1,32 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service
+            id="dotpay_credentials"
+            class="SymfonyBundles\DotpayBundle\Service\CredentialsLocator">
+        </service>
+
+        <service
+            id="dotpay_extension_credentials"
+            class="SymfonyBundles\DotpayBundle\Service\ExtensionCredentials"
+            public="false">
+            <argument type="service" id="service_container"/>
+            <tag name="dotpay_credentials"/>
+        </service>
+
+        <service
+            id="dotpay_parameters_credentials"
+            class="SymfonyBundles\DotpayBundle\Service\ParametersCredentials"
+            public="false">
+            <argument type="service" id="service_container"/>
+            <tag name="dotpay_credentials"/>
+        </service>
+    </services>
 
     <!--
     <services>
