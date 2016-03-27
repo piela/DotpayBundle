@@ -22,6 +22,13 @@ class SymfonyBundlesDotpayExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        if (isset($configs[0]['pin'])) {
+            $container->setParameter('dotpay_credentials_pin', $configs[0]['pin']);
+        }
+        if (isset($configs[0]['id'])) {
+            $container->setParameter('dotpay_credentials_id', $configs[0]['id']);
+        }
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
