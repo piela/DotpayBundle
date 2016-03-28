@@ -4,13 +4,13 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SymfonyFolder\DotpayBundle\Entity\PaymentRequest;
-use SymfonyFolder\DotpayBundle\Form\PaymentRequestType;
-use SymfonyFolder\DotpayBundle\Entity\PaymentStatus;
-use SymfonyFolder\DotpayBundle\Form\PaymentStatusType;
+use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
+use SymfonyCollection\DotpayBundle\Form\PaymentRequestType;
+use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Form\PaymentStatusType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
-use SymfonyFolder\DotpayBundle\Service\CheckSumConstraint;
+use SymfonyCollection\DotpayBundle\Service\CheckSumConstraint;
 
 class DefaultController extends Controller
 {

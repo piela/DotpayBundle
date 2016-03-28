@@ -9,7 +9,7 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
   foo.twig.extension:
-        class: SymfonyFolder\DotpayBundle\Credentials\ParametersCredentials
+        class: SymfonyCollection\DotpayBundle\Credentials\ParametersCredentials
         arguments: ["@service_container"]
         public: false
         tags:

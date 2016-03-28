@@ -3,7 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
-symfony_folder_dotpay:
+symfony_collection_dotpay:
   pin: 12341234
   id: 1234
 
