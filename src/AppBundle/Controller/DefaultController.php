@@ -4,12 +4,13 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SymfonyBundles\DotpayBundle\Entity\PaymentRequest;
-use SymfonyBundles\DotpayBundle\Form\PaymentRequestType;
-use SymfonyBundles\DotpayBundle\Entity\PaymentStatus;
-use SymfonyBundles\DotpayBundle\Form\PaymentStatusType;
+use SymfonyFolder\DotpayBundle\Entity\PaymentRequest;
+use SymfonyFolder\DotpayBundle\Form\PaymentRequestType;
+use SymfonyFolder\DotpayBundle\Entity\PaymentStatus;
+use SymfonyFolder\DotpayBundle\Form\PaymentStatusType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use SymfonyFolder\DotpayBundle\Service\CheckSumConstraint;
 
 class DefaultController extends Controller
 {
@@ -19,7 +20,10 @@ class DefaultController extends Controller
      */
     public function requestAction(Request $request)
     {
+
         $paymentRequest = new PaymentRequest();
+        $paymentRequest->setMerchantId(1000000);
+
         $form = $this->createForm(PaymentRequestType::class, $paymentRequest);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -39,6 +43,8 @@ class DefaultController extends Controller
     public function statusAction(Request $request)
     {
         $paymentStatus = new PaymentStatus();
+        $paymentStatus->setOperationDatetime(new \DateTimeImmutable('now'));
+
         $form = $this->createForm(PaymentStatusType::class, $paymentStatus);
         $form->handleRequest($request);
         if ($form->isValid()) {
