@@ -22,6 +22,20 @@
         </property>
         <property name="lang">
             <constraint name="NotBlank"/>
+            <constraint name="Choice">
+                <option name="message">dotpay_request_invalid_language</option>
+                <option name="choices">
+                    <value>pl</value>
+                    <value>en</value>
+                    <value>de</value>
+                    <value>it</value>
+                    <value>fr</value>
+                    <value>es</value>
+                    <value>cz</value>
+                    <value>ru</value>
+                    <value>bg</value>
+                </option>
+            </constraint>
         </property>
         <property name="channel">
             <constraint name="NotBlank"/>
@@ -92,6 +106,7 @@
     </class>
 
     <class name="SymfonyBundles\DotpayBundle\Entity\PaymentStatus">
+        <constraint name="SymfonyBundles\DotpayBundle\Validator\CheckSumConstraint" />
         <property name="merchantId">
             <constraint name="NotBlank"/>
         </property>

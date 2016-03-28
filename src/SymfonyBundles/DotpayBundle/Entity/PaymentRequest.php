@@ -31,7 +31,7 @@ class PaymentRequest
     /**
      * @var int
      *
-     * @ORM\Column(name="merchant_id", type="integer")
+     * @ORM\Column(name="merchant_id", type="string")
      */
     private $merchantId;
 

@@ -1,23 +1,25 @@
 <?php
 
-namespace SymfonyBundles\DotpayBundle\Service;
+namespace SymfonyBundles\DotpayBundle\Validator;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use SymfonyBundles\DotpayBundle\Credentials\EstablishedCredentials;
 use SymfonyBundles\DotpayBundle\Entity\PaymentStatus;
+use SymfonyBundles\DotpayBundle\Credentials\Credentials;
 
 class CheckSumConstraintValidator extends ConstraintValidator
 {
     private $provider;
 
-    public function __construct(CredentialsProvider $provider)
+    public function __construct(EstablishedCredentials $provider)
     {
         $this->provider = $provider;
     }
 
     public function validate($status, Constraint $constraint)
     {
-        if (!$this->validateCheckSum($status, $this->provider->provideCredentials())) {
+        if (!$this->validateCheckSum($status, $this->provider->credentials())) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('%number%', $status->getOperationNumber())
                 ->addViolation();
@@ -27,7 +29,7 @@ class CheckSumConstraintValidator extends ConstraintValidator
     private function validateCheckSum(PaymentStatus $status, Credentials $credentials)
     {
         return $status->getSignature() == hash('sha256', sprintf(
-            '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s',
+            '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s',
             $credentials->pin(),
             $credentials->id(),
             $status->getOperationNumber(),
@@ -39,14 +41,13 @@ class CheckSumConstraintValidator extends ConstraintValidator
             $status->getOperationCommissionAmount(),
             $status->getOperationOriginalAmount(),
             $status->getOperationOriginalCurrency(),
-            $status->getOperationDatetime(),
+            $status->getOperationDatetime()->format('Y-m-d H:i:s'),
             $status->getOperationRelatedNumber(),
             $status->getControl(),
             $status->getDescription(),
             $status->getEmail(),
             $status->getPInfo(),
             $status->getPEmail(),
-            $status->getChannel(),
             $status->getChannel(),
             $status->getChannelCountry(),
             $status->getGeoipCountry()

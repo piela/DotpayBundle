@@ -7,43 +7,12 @@
     <services>
 
         <service
-                id="dotpay_credentials"
-                class="SymfonyBundles\DotpayBundle\Service\CredentialsLocator">
-        </service>
-
-        <service
-                id="dotpay_extension_credentials"
-                class="SymfonyBundles\DotpayBundle\Service\ExtensionCredentials"
-                public="false">
-            <argument type="service" id="service_container"/>
-            <tag name="dotpay_credentials"/>
-        </service>
-
-        <service
-                id="dotpay_parameters_credentials"
-                class="SymfonyBundles\DotpayBundle\Service\ParametersCredentials"
-                public="false">
-            <argument type="service" id="service_container"/>
-            <tag name="dotpay_credentials"/>
-        </service>
-
-        <service
                 id="dotpay_checksum_validator"
                 class="SymfonyBundles\DotpayBundle\Service\CheckSumConstraintValidator">
-            <argument type="service" id="dotpay_credentials"/>
+            <argument type="service" id="dotpay_credentials" />
             <tag name="validator.constraint_validator" alias="dotpay_checksum_validator"/>
         </service>
 
     </services>
 
-
-    <!--
-    <services>
-        <service id="symfony_bundles_dotpay.example" class="SymfonyBundles\DotpayBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
 </container>

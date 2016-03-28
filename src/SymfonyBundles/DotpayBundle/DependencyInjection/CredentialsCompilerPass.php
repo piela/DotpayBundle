@@ -4,29 +4,40 @@ namespace SymfonyBundles\DotpayBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 class CredentialsCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('dotpay_credentials')) {
-            return;
+        $establishedCredentials = [];
+
+        foreach($container->findTaggedServiceIds('dotpay_credentials') as $id => $attrs) {
+            $establishedCredentials[] = new Reference($id);
         }
 
-        $definition = $container->findDefinition(
-            'dotpay_credentials'
+        $establishedCredentials[] = new Definition(
+            'SymfonyBundles\DotpayBundle\Credentials\ParametersCredentials', [
+                new Reference('service_container')
+            ]
         );
 
-        $taggedServices = $container->findTaggedServiceIds(
-            'dotpay_credentials'
+        $establishedCredentials[] = new Definition(
+            'SymfonyBundles\DotpayBundle\Credentials\ExtensionCredentials', [
+                new Reference('service_container')
+            ]
         );
-        
-        foreach ($taggedServices as $id => $tags) {
-            $definition->addMethodCall(
-                'addProvider',
-                array(new Reference($id))
-            );
-        }
+
+        $container->setDefinition('dotpay_credentials', new Definition(
+            'SymfonyBundles\DotpayBundle\Credentials\CachedCredentials', [
+                new Definition(
+                    'SymfonyBundles\DotpayBundle\Credentials\EstablishedCredentialsChain',
+                    $establishedCredentials
+                )
+            ]
+        ));
+
     }
+
 }

@@ -94,7 +94,7 @@ class PaymentStatus
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="operation_datetime", type="datetime")
+     * @ORM\Column(name="operation_datetime", type="date")
      */
     private $operationDatetime;
 
