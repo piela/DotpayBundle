@@ -11,13 +11,15 @@ class CheckSumValidatorCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         $definition = new Definition(
-            'SymfonyBundles\DotpayBundle\Validator\CheckSumConstraintValidator', [
+            'SymfonyBundles\DotpayBundle\Validator\CheckSumValidator', [
                 $container->getDefinition('dotpay_credentials')
             ]
         );
-        $definition->addTag('name', ['name' => 'validator.constraint_validator']);
-        $definition->addTag('alias', ['alias' => 'dotpay_checksum_validator']);
         $container->setDefinition('dotpay_checksum_validator', $definition);
+
+        $validators = $container->getDefinition('validator.validator_factory')->getArgument(1);
+        $validators['dotpay_checksum_validator'] = 'dotpay_checksum_validator';
+        $container->getDefinition('validator.validator_factory')->replaceArgument(1, $validators);
     }
 
 }

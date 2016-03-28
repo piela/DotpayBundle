@@ -8,7 +8,7 @@ use SymfonyBundles\DotpayBundle\Credentials\EstablishedCredentials;
 use SymfonyBundles\DotpayBundle\Entity\PaymentStatus;
 use SymfonyBundles\DotpayBundle\Credentials\Credentials;
 
-class CheckSumConstraintValidator extends ConstraintValidator
+class CheckSumValidator extends ConstraintValidator
 {
     private $provider;
 

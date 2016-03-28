@@ -37,7 +37,6 @@ class CredentialsCompilerPass implements CompilerPassInterface
                 )
             ]
         ));
-
     }
 
 }
