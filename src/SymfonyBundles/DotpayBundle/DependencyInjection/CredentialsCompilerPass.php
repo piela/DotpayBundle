@@ -21,6 +21,7 @@ class CredentialsCompilerPass implements CompilerPassInterface
         $taggedServices = $container->findTaggedServiceIds(
             'dotpay_credentials'
         );
+        
         foreach ($taggedServices as $id => $tags) {
             $definition->addMethodCall(
                 'addProvider',
