@@ -5,25 +5,69 @@
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentRequest">
+        <!--
+            PaymentRequest::apiVersion
+        -->
         <property name="apiVersion">
             <constraint name="NotBlank"/>
+            <constraint name="Choice">
+                <option name="message">dotpay.request.invalid_api_version</option>
+                <option name="choices">
+                    <value>dev</value>
+                </option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::merchantId
+         -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">integer</option>
+                <option name="message">The value {{ value }} is not a valid {{ type }}.</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">999999</option>
+                <option name="minMessage">You must be at {{ limit }}</option>
+                <option name="maxMessage">You cannot be taller than {{ limit }}</option>
+            </constraint>
         </property>
         <property name="amount">
             <constraint name="NotBlank"/>
         </property>
         <property name="currency">
             <constraint name="NotBlank"/>
+            <constraint name="Choice">
+                <option name="message">dotpay.request.invalid_currency</option>
+                <option name="choices">
+                    <value>PLN</value>
+                    <value>EUR</value>
+                    <value>USD</value>
+                    <value>GBP</value>
+                    <value>JPY</value>
+                    <value>CZK</value>
+                    <value>SEK</value>
+                </option>
+            </constraint>
         </property>
         <property name="description">
             <constraint name="NotBlank"/>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+                <option name="minMessage">
+                    Description must be at least {{ limit }} characters long
+                </option>
+                <option name="maxMessage">
+                    Description cannot be longer than {{ limit }} characters
+                </option>
+            </constraint>
         </property>
         <property name="lang">
             <constraint name="NotBlank"/>
             <constraint name="Choice">
-                <option name="message">dotpay_request_invalid_language</option>
+                <option name="message">dotpay.request.invalid_language</option>
                 <option name="choices">
                     <value>pl</value>
                     <value>en</value>
