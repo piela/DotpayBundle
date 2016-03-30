@@ -8,10 +8,11 @@
         <!--
             PaymentRequest::apiVersion
         -->
-        <property name="apiVersion">
-            <constraint name="NotBlank"/>
+        <property name="apiVersion">            
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>            
             <constraint name="Choice">
-                <option name="message">dotpay.request.invalid_api_version</option>
                 <option name="choices">
                     <value>dev</value>
                 </option>
@@ -19,27 +20,40 @@
         </property>
         <!--
              PaymentRequest::merchantId
-         -->
+        -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
             <constraint name="Type">
                 <option name="type">integer</option>
-                <option name="message">The value {{ value }} is not a valid {{ type }}.</option>
             </constraint>
             <constraint name="Range">
                 <option name="min">1</option>
                 <option name="max">999999</option>
-                <option name="minMessage">You must be at {{ limit }}</option>
-                <option name="maxMessage">You cannot be taller than {{ limit }}</option>
             </constraint>
         </property>
+        <!--
+            PaymentRequest::amount
+        -->        
         <property name="amount">
-            <constraint name="NotBlank"/>
+            <constraint name="NotBlank"/>            
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">10</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0.1</option>
+                <option name="max">9999999.99</option>
+            </constraint>            
         </property>
+        <!--
+             PaymentRequest::currency
+        -->        
         <property name="currency">
             <constraint name="NotBlank"/>
             <constraint name="Choice">
-                <option name="message">dotpay.request.invalid_currency</option>
                 <option name="choices">
                     <value>PLN</value>
                     <value>EUR</value>
@@ -51,23 +65,24 @@
                 </option>
             </constraint>
         </property>
+        <!--
+             PaymentRequest::description
+        -->             
         <property name="description">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">255</option>
-                <option name="minMessage">
-                    Description must be at least {{ limit }} characters long
-                </option>
-                <option name="maxMessage">
-                    Description cannot be longer than {{ limit }} characters
-                </option>
             </constraint>
         </property>
+        <!--
+             PaymentRequest::lang
+        -->                     
         <property name="lang">
-            <constraint name="NotBlank"/>
             <constraint name="Choice">
-                <option name="message">dotpay.request.invalid_language</option>
                 <option name="choices">
                     <value>pl</value>
                     <value>en</value>
@@ -81,72 +96,147 @@
                 </option>
             </constraint>
         </property>
-        <property name="channel">
-            <constraint name="NotBlank"/>
-        </property>
+        <!--
+             PaymentRequest::channel
+        -->                                     
+        <!--property name="channel">
+        </property!-->        
+        <!--
+             PaymentRequest::chLock
+        -->                             
         <property name="chLock">
-            <constraint name="NotBlank"/>
-        </property>
+            <constraint name="Type">
+                <option name="type">bool</option>
+            </constraint>
+        </property>        
+        <!--
+             PaymentRequest::chanelGroups
+        -->                     
+        <!--property name="channelGroups">
+        </property!-->
+        <!--
+             PaymentRequest::url
+        -->                     
         <property name="url">
-            <constraint name="NotBlank"/>
-        </property>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">1000</option>
+            </constraint>    
+            <constraint name="Url" />                
+        </property>        
+        <!--
+             PaymentRequest::type
+        -->                             
         <property name="type">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">int</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0</option>
+                <option name="max">4</option>
+            </constraint>            
         </property>
+        <!--
+             PaymentRequest::type
+        -->                                     
         <property name="buttontext">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">4</option>
+                <option name="max">100</option>
+            </constraint>                
         </property>
+        <!--
+             PaymentRequest::urlc
+        -->                                      
         <property name="urlc">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">1000</option>
+            </constraint>                            
         </property>
+        <!--
+             PaymentRequest::control
+        -->                                              
         <property name="control">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">1000</option>
+            </constraint>                                        
         </property>
+        <!--
+             PaymentRequest::firstName
+        -->                                                              
         <property name="firstname">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">50</option>
+            </constraint>                                                    
         </property>
+        <!--
+             PaymentRequest::lastName
+        -->                                                      
         <property name="lastname">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">50</option>
+            </constraint>                                                                
         </property>
+        <!--
+             PaymentRequest::email
+        -->                                                      
         <property name="email">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>             
+            <constraint name="Email" />                                                              
         </property>
+        
         <property name="street">
-            <constraint name="NotBlank"/>
         </property>
         <property name="streetN1">
-            <constraint name="NotBlank"/>
         </property>
         <property name="streetN2">
-            <constraint name="NotBlank"/>
         </property>
         <property name="state">
-            <constraint name="NotBlank"/>
         </property>
         <property name="addr3">
-            <constraint name="NotBlank"/>
         </property>
         <property name="city">
-            <constraint name="NotBlank"/>
         </property>
         <property name="postcode">
-            <constraint name="NotBlank"/>
         </property>
         <property name="phone">
-            <constraint name="NotBlank"/>
         </property>
         <property name="country">
-            <constraint name="NotBlank"/>
         </property>
         <property name="pInfo">
-            <constraint name="NotBlank"/>
         </property>
         <property name="pEmail">
-            <constraint name="NotBlank"/>
         </property>
         <property name="errorCode">
-            <constraint name="NotBlank"/>
-        </property>
+        </property-->
     </class>
 
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
