@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use SymfonyCollection\DotpayBundle\Entity\OperationType;
 
 class PaymentStatusType extends AbstractType
 {
@@ -18,7 +20,10 @@ class PaymentStatusType extends AbstractType
         $builder
             ->add('merchantId')
             ->add('operationNumber')
-            ->add('operationType')
+            ->add('operationType', EntityType::class, [
+                'class' => OperationType::class,
+                'choice_label' => 'name'
+            ])
             ->add('operationStatus')
             ->add('operationAmount')
             ->add('operationCurrency')
