@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PaymentStatus
  *
- * @ORM\Table(name="payment_status")
+ * @ORM\Table(name="dotpay_payment_status")
  * @ORM\Entity(repositoryClass="SymfonyCollection\DotpayBundle\Repository\PaymentStatusRepository")
  */
 class PaymentStatus
