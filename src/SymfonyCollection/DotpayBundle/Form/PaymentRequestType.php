@@ -42,6 +42,7 @@ class PaymentRequestType extends AbstractType
             ->add('country')
             ->add('pInfo')
             ->add('pEmail')
+            ->add('blickCode')
             ->add('errorCode')
         ;
     }

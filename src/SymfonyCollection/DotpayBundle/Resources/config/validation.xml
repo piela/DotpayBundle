@@ -339,6 +339,18 @@
             </constraint>
         </property>
         <!--
+             PaymentRequest::blickCode
+        -->
+        <property name="blickCode">
+            <constraint name="Type">
+                <option name="type">digit</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">6</option>
+                <option name="max">6</option>
+            </constraint>
+        </property>
+        <!--
              PaymentRequest::errorCode
         -->
         <property name="errorCode">

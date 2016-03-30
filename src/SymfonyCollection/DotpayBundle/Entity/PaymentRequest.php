@@ -213,6 +213,13 @@ class PaymentRequest
     /**
      * @var string
      *
+     * @ORM\Column(name="blick_code", type="string", length=6, nullable=true)
+     */
+    private $blickCode;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="error_code", type="string", length=100, nullable=true)
      */
     private $errorCode;
@@ -874,6 +881,30 @@ class PaymentRequest
     {
         return $this->pEmail;
     }
+    
+    /**
+     * Set blickCode
+     *
+     * @param string $blickCode
+     *
+     * @return PaymentRequest
+     */
+    public function setBlickCode($blickCode)
+    {
+        $this->blickCode = $blickCode;
+
+        return $this;
+    }
+
+    /**
+     * Get blickCode
+     *
+     * @return string
+     */
+    public function getBlickCode()
+    {
+        return $this->blickCode;
+    }
 
     /**
      * Set errorCode
@@ -898,4 +929,5 @@ class PaymentRequest
     {
         return $this->errorCode;
     }
+
 }
