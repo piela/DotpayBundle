@@ -36,9 +36,8 @@ class PaymentStatus
     private $operationNumber;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="operation_type", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="OperationType")
+     * @ORM\JoinColumn(name="operation_type_id", referencedColumnName="id", nullable=false)
      */
     private $operationType;
 
@@ -230,11 +229,11 @@ class PaymentStatus
     /**
      * Set operationType
      *
-     * @param string $operationType
+     * @param OperationType $operationType
      *
      * @return PaymentStatus
      */
-    public function setOperationType($operationType)
+    public function setOperationType(OperationType $operationType = null)
     {
         $this->operationType = $operationType;
 
@@ -244,7 +243,7 @@ class PaymentStatus
     /**
      * Get operationType
      *
-     * @return string
+     * @return OperationType
      */
     public function getOperationType()
     {
@@ -682,5 +681,5 @@ class PaymentStatus
     {
         return $this->signature;
     }
-}
 
+}

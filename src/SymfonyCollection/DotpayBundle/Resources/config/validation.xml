@@ -365,12 +365,28 @@
     </class>
 
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
+        <!--
+            PaymentRequest::merchantId
+        -->
         <constraint name="SymfonyCollection\DotpayBundle\Validator\CheckSumConstraint"/>
+        <!--
+            PaymentRequest::merchantId
+        -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">999999</option>
+            </constraint>
         </property>
         <property name="operationNumber">
             <constraint name="NotBlank"/>
+            <constraint name="Regex">
+                <option name="pattern">/M[0-9]{4,5}-[0-9]{4,5}$/</option>
+            </constraint>
         </property>
         <property name="operationType">
             <constraint name="NotBlank"/>

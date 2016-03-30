@@ -28,7 +28,6 @@ class OperationType
      */
     private $name;
 
-
     /**
      * Get id
      *
@@ -62,5 +61,6 @@ class OperationType
     {
         return $this->name;
     }
+
 }
 
