@@ -8,10 +8,10 @@
         <!--
             PaymentRequest::apiVersion
         -->
-        <property name="apiVersion">            
+        <property name="apiVersion">
             <constraint name="Type">
                 <option name="type">string</option>
-            </constraint>            
+            </constraint>
             <constraint name="Choice">
                 <option name="choices">
                     <value>dev</value>
@@ -33,9 +33,9 @@
         </property>
         <!--
             PaymentRequest::amount
-        -->        
+        -->
         <property name="amount">
-            <constraint name="NotBlank"/>            
+            <constraint name="NotBlank"/>
             <constraint name="Type">
                 <option name="type">string</option>
             </constraint>
@@ -46,11 +46,11 @@
             <constraint name="Range">
                 <option name="min">0.1</option>
                 <option name="max">9999999.99</option>
-            </constraint>            
+            </constraint>
         </property>
         <!--
              PaymentRequest::currency
-        -->        
+        -->
         <property name="currency">
             <constraint name="NotBlank"/>
             <constraint name="Choice">
@@ -67,7 +67,7 @@
         </property>
         <!--
              PaymentRequest::description
-        -->             
+        -->
         <property name="description">
             <constraint name="NotBlank"/>
             <constraint name="Type">
@@ -80,7 +80,7 @@
         </property>
         <!--
              PaymentRequest::lang
-        -->                     
+        -->
         <property name="lang">
             <constraint name="Choice">
                 <option name="choices">
@@ -98,25 +98,25 @@
         </property>
         <!--
              PaymentRequest::channel
-        -->                                     
+        -->
         <!--property name="channel">
-        </property!-->        
+        </property!-->
         <!--
              PaymentRequest::chLock
-        -->                             
+        -->
         <property name="chLock">
             <constraint name="Type">
                 <option name="type">bool</option>
             </constraint>
-        </property>        
+        </property>
         <!--
              PaymentRequest::chanelGroups
-        -->                     
+        -->
         <!--property name="channelGroups">
         </property!-->
         <!--
              PaymentRequest::url
-        -->                     
+        -->
         <property name="url">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -124,12 +124,12 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">1000</option>
-            </constraint>    
-            <constraint name="Url" />                
-        </property>        
+            </constraint>
+            <constraint name="Url"/>
+        </property>
         <!--
              PaymentRequest::type
-        -->                             
+        -->
         <property name="type">
             <constraint name="Type">
                 <option name="type">int</option>
@@ -137,11 +137,11 @@
             <constraint name="Range">
                 <option name="min">0</option>
                 <option name="max">4</option>
-            </constraint>            
+            </constraint>
         </property>
         <!--
              PaymentRequest::type
-        -->                                     
+        -->
         <property name="buttontext">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -149,11 +149,11 @@
             <constraint name="Length">
                 <option name="min">4</option>
                 <option name="max">100</option>
-            </constraint>                
+            </constraint>
         </property>
         <!--
              PaymentRequest::urlc
-        -->                                      
+        -->
         <property name="urlc">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -161,11 +161,11 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">1000</option>
-            </constraint>                            
+            </constraint>
         </property>
         <!--
              PaymentRequest::control
-        -->                                              
+        -->
         <property name="control">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -173,11 +173,11 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">1000</option>
-            </constraint>                                        
+            </constraint>
         </property>
         <!--
              PaymentRequest::firstName
-        -->                                                              
+        -->
         <property name="firstname">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -185,11 +185,11 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">50</option>
-            </constraint>                                                    
+            </constraint>
         </property>
         <!--
              PaymentRequest::lastName
-        -->                                                      
+        -->
         <property name="lastname">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -197,11 +197,11 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">50</option>
-            </constraint>                                                                
+            </constraint>
         </property>
         <!--
              PaymentRequest::email
-        -->                                                      
+        -->
         <property name="email">
             <constraint name="Type">
                 <option name="type">string</option>
@@ -209,38 +209,151 @@
             <constraint name="Length">
                 <option name="min">1</option>
                 <option name="max">100</option>
-            </constraint>             
-            <constraint name="Email" />                                                              
+            </constraint>
+            <constraint name="Email"/>
         </property>
-        
+        <!--
+            PaymentRequest::street
+        -->
         <property name="street">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::streetN1
+        -->
         <property name="streetN1">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">30</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::streetN2
+        -->
         <property name="streetN2">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::state
+        -->
         <property name="state">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">50</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::addr3
+        -->
         <property name="addr3">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">30</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::city
+        -->
         <property name="city">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">50</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::postcode
+        -->
         <property name="postcode">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">20</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::phone
+        -->
         <property name="phone">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">20</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::country
+        -->
         <property name="country">
+            <constraint name="Country" />
         </property>
+        <!--
+             PaymentRequest::pInfo
+        -->
         <property name="pInfo">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">300</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::pEmail
+        -->
         <property name="pEmail">
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
         </property>
+        <!--
+             PaymentRequest::errorCode
+        -->
         <property name="errorCode">
-        </property-->
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">50</option>
+            </constraint>
+        </property>
     </class>
 
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
-        <constraint name="SymfonyCollection\DotpayBundle\Validator\CheckSumConstraint" />
+        <constraint name="SymfonyCollection\DotpayBundle\Validator\CheckSumConstraint"/>
         <property name="merchantId">
             <constraint name="NotBlank"/>
         </property>
