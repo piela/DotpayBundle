@@ -24,35 +24,35 @@ class PaymentRequest
     /**
      * @var string
      *
-     * @ORM\Column(name="api_version", type="string", length=20, nullable=false)
+     * @ORM\Column(name="api_version", type="string", length=20)
      */
     private $apiVersion;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="merchant_id", type="string", nullable=false)
+     * @ORM\Column(name="merchant_id", type="string")
      */
     private $merchantId;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="amount", type="string", length=10, nullable=false)
+     * @ORM\Column(name="amount", type="string", length=10)
      */
     private $amount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="currency", type="string", length=3, nullable=false)
+     * @ORM\Column(name="currency", type="string", length=3)
      */
     private $currency;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
