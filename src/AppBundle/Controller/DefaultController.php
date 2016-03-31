@@ -2,15 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
-use SymfonyCollection\DotpayBundle\Form\PaymentRequestType;
-use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
-use SymfonyCollection\DotpayBundle\Form\PaymentStatusType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
-use SymfonyCollection\DotpayBundle\Service\CheckSumConstraint;
+use SymfonyCollection\DotpayBundle\Entity\OperationType;
+use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
+use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Form\Type\OperationTypeType;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentRequestType;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentStatusType;
 
 class DefaultController extends Controller
 {
@@ -42,18 +43,22 @@ class DefaultController extends Controller
      */
     public function statusAction(Request $request)
     {
-        $paymentStatus = new PaymentStatus();
-        $paymentStatus->setOperationDatetime(new \DateTimeImmutable('now'));
+        $paymentStatus = $this->get('doctrine')
+            ->getManager()
+            ->getRepository('SymfonyCollectionDotpayBundle:PaymentStatus')
+            ->findOneById(1);
 
         $form = $this->createForm(PaymentStatusType::class, $paymentStatus);
+
         $form->handleRequest($request);
         if ($form->isValid()) {
-            dump($paymentStatus);
-            return new Response("Valid");
+            $this->get('doctrine')->getManager()->persist($paymentStatus);
+            $this->get('doctrine')->getManager()->flush();
         }
 
         return $this->render('default\payment-status.html.twig', [
             'form' => $form->createView()
         ]);
     }
+
 }

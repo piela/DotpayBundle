@@ -364,13 +364,61 @@
         </property>
     </class>
 
-    <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
+    <!--
+        SymfonyCollection\DotpayBundle\Entity\OperationType
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\OperationType">
         <!--
-            PaymentRequest::merchantId
+            OperationType::name
         -->
-        <constraint name="SymfonyCollection\DotpayBundle\Validator\CheckSumConstraint"/>
+        <property name="name">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>payment</value>
+                    <value>payment_multimerchant_child</value>
+                    <value>payment_multimerchant_parent</value>
+                    <value>refund</value>
+                    <value>payout</value>
+                    <value>release_rollback</value>
+                    <value>unidentified_payment</value>
+                    <value>complaint</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <!--
+        SymfonyCollection\DotpayBundle\Entity\OperationStatus
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\OperationStatus">
         <!--
-            PaymentRequest::merchantId
+            OperationStatus::name
+        -->
+        <property name="name">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>new</value>
+                    <value>processing</value>
+                    <value>payment_multimerchant_parent</value>
+                    <value>completed</value>
+                    <value>rejected</value>
+                    <value>processing_realization_waiting</value>
+                    <value>processing_realization</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <!--
+        SymfonyCollection\DotpayBundle\Entity\PaymentStatus
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
+
+        <constraint name="SymfonyCollection\DotpayBundle\Validation\Constraints\OperationStatusChangedConstraint"/>
+        <!--
+            PaymentStatus::merchantId
         -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
@@ -382,18 +430,30 @@
                 <option name="max">999999</option>
             </constraint>
         </property>
+        <!--
+            PaymentStatus::operationNumber
+        -->
         <property name="operationNumber">
             <constraint name="NotBlank"/>
             <constraint name="Regex">
                 <option name="pattern">/M[0-9]{4,5}-[0-9]{4,5}$/</option>
             </constraint>
         </property>
+        <!--
+            PaymentStatus::operationType
+        -->
         <property name="operationType">
-            <constraint name="NotBlank"/>
+            <constraint name="NotNull"/>
+            <constraint name="Valid" />
         </property>
+        <!--
+            PaymentStatus::operationType
+        -->
         <property name="operationStatus">
-            <constraint name="NotBlank"/>
+            <constraint name="NotNull"/>
+            <constraint name="Valid" />
         </property>
+
         <property name="operationAmount">
             <constraint name="NotBlank"/>
         </property>

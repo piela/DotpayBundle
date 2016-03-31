@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Validator;
+namespace SymfonyCollection\DotpayBundle\Validation\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 

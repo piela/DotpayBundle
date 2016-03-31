@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Form;
+namespace SymfonyCollection\DotpayBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

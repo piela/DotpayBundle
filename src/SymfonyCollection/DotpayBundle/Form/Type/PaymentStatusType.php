@@ -1,12 +1,13 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Form;
+namespace SymfonyCollection\DotpayBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
 use SymfonyCollection\DotpayBundle\Entity\OperationType;
 
 class PaymentStatusType extends AbstractType
@@ -24,7 +25,10 @@ class PaymentStatusType extends AbstractType
                 'class' => OperationType::class,
                 'choice_label' => 'name'
             ])
-            ->add('operationStatus')
+            ->add('operationStatus', EntityType::class, [
+                'class' => OperationStatus::class,
+                'choice_label' => 'name'
+            ])
             ->add('operationAmount')
             ->add('operationCurrency')
             ->add('operationWithdrawalAmount')

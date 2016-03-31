@@ -42,9 +42,8 @@ class PaymentStatus
     private $operationType;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="operation_status", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="OperationStatus")
+     * @ORM\JoinColumn(name="operation_status_id", referencedColumnName="id", nullable=false)
      */
     private $operationStatus;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Validator;
+namespace SymfonyCollection\DotpayBundle\Validation\Validators;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -33,8 +33,8 @@ class CheckSumValidator extends ConstraintValidator
             $credentials->pin(),
             $credentials->id(),
             $status->getOperationNumber(),
-            $status->getOperationType(),
-            $status->getOperationStatus(),
+            $status->getOperationType() ? $status->getOperationType()->getName() : '',
+            $status->getOperationStatus() ? $status->getOperationStatus()->getName() : '',
             $status->getOperationAmount(),
             $status->getOperationCurrency(),
             $status->getOperationWithdrawalAmount(),
