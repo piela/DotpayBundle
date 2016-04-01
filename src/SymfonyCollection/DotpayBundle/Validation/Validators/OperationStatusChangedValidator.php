@@ -33,7 +33,7 @@ class OperationStatusChangedValidator extends ConstraintValidator
      */
     public function validate($paymentStatus, Constraint $constraint)
     {
-        if (!$this->validateOperationStatusChange($paymentStatus->getOperationStatus())) {
+        if (!$this->validateOperationStatusChange($paymentStatus)) {
             $this->context->buildViolation($constraint->message)
                 ->addViolation();
         }
@@ -44,16 +44,18 @@ class OperationStatusChangedValidator extends ConstraintValidator
      * @param string $newStatus
      * @return bool
      */
-    private function validateOperationStatusChange(OperationStatus $status)
+    private function validateOperationStatusChange(PaymentStatus $paymentStatus)
     {
+        $originalEntityData = $this->manager->getUnitOfWork()->getOriginalEntityData(
+            $paymentStatus
+        );
+        $originalStatusName = $originalEntityData['operationStatus']->getName();
+        $operationStatus = $paymentStatus->getOperationStatus()->getName();
 
-
-        $oldStatus = $this->manager->find(OperationStatus::class, $status->getId())->getName();
-        dump($this->manager->getUnitOfWork()->getEntityChangeSet($this->manager->find(OperationStatus::class, $status->getId())));
-        dump($status);
-        dump($this->manager->find(OperationStatus::class, $status->getId()));
-
-        return ! (($status === 'completed' || $status === 'rejected') && $status->getName() !== $oldStatus);
+        return ! (
+            ($originalStatusName === 'completed' || $originalStatusName === 'rejected')
+                && $originalStatusName !== $operationStatus
+        );
     }
 
 }

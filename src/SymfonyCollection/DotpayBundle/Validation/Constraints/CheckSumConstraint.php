@@ -17,6 +17,6 @@ class CheckSumConstraint extends Constraint
     }
 
     public function validatedBy() {
-        return 'dotpay_checksum_validator';
+        return 'dotpay.validation.response_checksum';
     }
 }

@@ -48,10 +48,13 @@ class DefaultController extends Controller
             ->getRepository('SymfonyCollectionDotpayBundle:PaymentStatus')
             ->findOneById(1);
 
+        dump($paymentStatus);
+
         $form = $this->createForm(PaymentStatusType::class, $paymentStatus);
 
         $form->handleRequest($request);
         if ($form->isValid()) {
+
             $this->get('doctrine')->getManager()->persist($paymentStatus);
             $this->get('doctrine')->getManager()->flush();
         }

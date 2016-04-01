@@ -12,6 +12,5 @@ class SymfonyCollectionDotpayBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new CredentialsCompilerPass());
-        $container->addCompilerPass(new ValidatorsCompilerPass());
     }
 }

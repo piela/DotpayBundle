@@ -4,15 +4,28 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-<!--
-<services>
+    <services>
+
+        <!--
+            Validation
+        -->
+
         <service
-                id="dotpay_checksum_validator"
-                class="SymfonyCollection\DotpayBundle\Validator\CheckSumValidator">
-            <argument type="service" id="dotpay_credentials" />
-            <tag name="validator.constraint_validator" alias="dotpay_checksum_validator"/>
+                id="dotpay.validation.operation_status_changed"
+                class="SymfonyCollection\DotpayBundle\Validation\Validators\OperationStatusChangedValidator"
+                shared="true"
+                autowire="true">
+            <tag name="validator.constraint_validator" alias="dotpay.validation.operation_status_changed"/>
         </service>
-</services>
--->
+
+        <service
+                id="dotpay.validation.response_checksum"
+                class="SymfonyCollection\DotpayBundle\Validation\Validators\CheckSumConstraint"
+                shared="true"
+                autowire="true">
+            <tag name="validator.constraint_validator" alias="dotpay.validation.response_checksum"/>
+        </service>
+
+    </services>
 
 </container>
