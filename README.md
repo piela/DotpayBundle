@@ -42,3 +42,33 @@ class DefaultController extends Controller
 
 ### Transaction response (URLC)
 
+```php
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentStatusType;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/transaction-response")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function statusAction(Request $request)
+    {
+        $paymentStatus = new PaymentStatus();
+        $form = $this->createForm(PaymentStatusType::class, $paymentStatus);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+          // Update transaction status
+          // Update UI
+          return new Response("OK");
+        }
+        // Log validation errors
+    }
+```
+
