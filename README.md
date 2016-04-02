@@ -6,6 +6,24 @@ DotpayBundle
 
 ## 1. Credentials
 
+#### Parameters strategy
+```yml
+parameters:
+    dotpay:
+      id: xxxxx
+      pin: xxxxxxxxxxx
+```
+
+#### Extension strategy
+```yml
+symfony_collection_dotpay:
+  id: xxxxx
+  pin: xxxxxxxxx
+```
+
+#### Custom strategy
+
+
 ## 2. Enviroment
 
 ## 3. Transaction request
