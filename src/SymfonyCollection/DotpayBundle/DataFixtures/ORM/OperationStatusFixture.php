@@ -6,7 +6,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
 
-class LoadOperationStatusData implements FixtureInterface
+class OperationStatusFixture implements FixtureInterface
 {
     /**
      * @param ObjectManager $manager
