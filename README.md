@@ -4,7 +4,7 @@ DotpayBundle
 **Not production yet**
 
 
-## 1. Credentials
+## 1. Configuration
 
 #### Parameters strategy
 ```yml
@@ -30,9 +30,7 @@ symfony_collection_dotpay:
 #### Custom strategy
 
 
-## 2. Enviroment
-
-## 3. Transaction request
+## Transaction request
 
 ```php
 namespace AppBundle\Controller;
@@ -67,7 +65,7 @@ class DefaultController extends Controller
     }
 ```
 
-## 4. Transaction response (URLC)
+## 
 
 ```php
 namespace AppBundle\Controller;
