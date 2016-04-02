@@ -1,3 +1,8 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+
+dotpay:
+    resource: "@SymfonyCollectionDotpayBundle/Controller"
+    type: annotation

@@ -7,13 +7,24 @@
     <services>
 
         <!--
+            Controller
+        -->
+
+        <service
+                id="dotpay.controller"
+                class="SymfonyCollection\DotpayBundle\Controller\DotpayController"
+                shared="false"
+                autowire="true">
+        </service>
+
+        <!--
             Validation
         -->
 
         <service
                 id="dotpay.validation.operation_status_changed"
                 class="SymfonyCollection\DotpayBundle\Validation\Validators\OperationStatusChangedValidator"
-                shared="true"
+                shared="false"
                 autowire="true">
             <tag name="validator.constraint_validator" alias="dotpay.validation.operation_status_changed"/>
         </service>
@@ -21,7 +32,7 @@
         <service
                 id="dotpay.validation.response_checksum"
                 class="SymfonyCollection\DotpayBundle\Validation\Validators\CheckSumConstraint"
-                shared="true"
+                shared="false"
                 autowire="true">
             <tag name="validator.constraint_validator" alias="dotpay.validation.response_checksum"/>
         </service>
