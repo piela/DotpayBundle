@@ -8,17 +8,23 @@ DotpayBundle
 
 #### Parameters strategy
 ```yml
+# app/config/config.yml
+
 parameters:
     dotpay:
-      id: xxxxx
-      pin: xxxxxxxxxxx
+        credentials:
+            id: xxxxx
+            pin: xxxxxxxxxxx
 ```
 
 #### Extension strategy
 ```yml
+# app/config/config.yml
+
 symfony_collection_dotpay:
-  id: xxxxx
-  pin: xxxxxxxxx
+    credentials:
+        id: xxxxx
+        pin: xxxxxxxxxxx
 ```
 
 #### Custom strategy
