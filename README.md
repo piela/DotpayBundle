@@ -4,11 +4,11 @@ DotpayBundle
 **Not production yet**
 
 
-## Credentials
+## 1. Credentials
 
-## Enviroment
+## 2. Enviroment
 
-## Transaction request
+## 3. Transaction request
 
 ```php
 namespace AppBundle\Controller;
@@ -43,7 +43,7 @@ class DefaultController extends Controller
     }
 ```
 
-## Transaction response (URLC)
+## 4. Transaction response (URLC)
 
 ```php
 namespace AppBundle\Controller;
