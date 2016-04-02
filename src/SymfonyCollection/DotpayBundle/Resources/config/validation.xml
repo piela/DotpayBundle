@@ -354,13 +354,7 @@
              PaymentRequest::errorCode
         -->
         <property name="errorCode">
-            <constraint name="Type">
-                <option name="type">string</option>
-            </constraint>
-            <constraint name="Length">
-                <option name="min">1</option>
-                <option name="max">50</option>
-            </constraint>
+            <constraint name="Valid" />
         </property>
     </class>
 
@@ -412,6 +406,29 @@
     </class>
 
     <!--
+        SymfonyCollection\DotpayBundle\Entity\ErrorCode
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\ErrorCode">
+        <!--
+            ErrorCode::name
+        -->
+        <property name="name">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>PAYMENT_EXPIRED</value>
+                    <value>UNKNOWN_CHANNEL</value>
+                    <value>DISABLED_CHANNEL</value>
+                    <value>BLOCKED_ACCOUNT</value>
+                    <value>INACTIVE_SELLER</value>
+                    <value>AMOUNT_TOO_HIGH</value>
+                    <value>BAD_DATA_FORMAT</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <!--
         SymfonyCollection\DotpayBundle\Entity\PaymentStatus
     -->
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
@@ -436,7 +453,7 @@
         <property name="operationNumber">
             <constraint name="NotBlank"/>
             <constraint name="Regex">
-                <option name="pattern">/M[0-9]{4,5}-[0-9]{4,5}$/</option>
+                <option name="pattern">/^M[0-9]{4,5}-[0-9]{4,5}$/</option>
             </constraint>
         </property>
         <!--
@@ -453,46 +470,167 @@
             <constraint name="NotNull"/>
             <constraint name="Valid" />
         </property>
-
+        <!--
+            PaymentStatus::operationAmount
+        -->
         <property name="operationAmount">
             <constraint name="NotBlank"/>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">10</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0.1</option>
+                <option name="max">9999999.99</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::operationCurrency
+        -->
         <property name="operationCurrency">
             <constraint name="NotBlank"/>
+            <constraint name="Currency" />
         </property>
+        <!--
+            PaymentStatus::operationWithdrawalAmount
+        -->
         <property name="operationWithdrawalAmount">
-            <constraint name="NotBlank"/>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">10</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0.1</option>
+                <option name="max">9999999.99</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::operationCommissionAmount
+        -->
         <property name="operationCommissionAmount">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">10</option>
+            </constraint>
+            <constraint name="LessThan">
+                <option name="value">0</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::operationOriginalAmount
+        -->
         <property name="operationOriginalAmount">
             <constraint name="NotBlank"/>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">10</option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0.1</option>
+                <option name="max">9999999.99</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::operationOriginalCurrency
+        -->
         <property name="operationOriginalCurrency">
             <constraint name="NotBlank"/>
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>PLN</value>
+                    <value>EUR</value>
+                    <value>USD</value>
+                    <value>GBP</value>
+                    <value>JPY</value>
+                    <value>CZK</value>
+                    <value>SEK</value>
+                </option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::operationDatetime
+        -->
         <property name="operationDatetime">
             <constraint name="NotNull"/>
+            <constraint name="DateTime" />
         </property>
+        <!--
+            PaymentStatus::operationRelatedNumber
+        -->
         <property name="operationRelatedNumber">
             <constraint name="NotBlank"/>
+            <constraint name="Regex">
+                <option name="pattern">/^M[0-9]{4,5}-[0-9]{4,5}$/</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::control
+        -->
         <property name="control">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">1000</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::description
+        -->
         <property name="description">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+            </constraint>
         </property>
+        <!--
+            PaymentStatus::email
+        -->
         <property name="email">
             <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
+            <constraint name="Email"/>
         </property>
+        <!--
+             PaymentStatus::pInfo
+        -->
         <property name="pInfo">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">300</option>
+            </constraint>
         </property>
+        <!--
+             PaymentStatus::pEmail
+        -->
         <property name="pEmail">
-            <constraint name="NotBlank"/>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
         </property>
+
         <property name="channel">
             <constraint name="NotBlank"/>
         </property>

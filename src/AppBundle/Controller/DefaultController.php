@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use SymfonyCollection\DotpayBundle\Entity\OperationType;
+use SymfonyCollection\DotpayBundle\Entity\ErrorCode;
 use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
 use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
 use SymfonyCollection\DotpayBundle\Form\Type\OperationTypeType;
@@ -16,52 +16,59 @@ use SymfonyCollection\DotpayBundle\Form\Type\PaymentStatusType;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/payment-request")
+     * @Route("/transaction-request", name="dotpay_request_form")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function requestAction(Request $request)
     {
-
         $paymentRequest = new PaymentRequest();
-        $paymentRequest->setMerchantId(1000000);
-
-        $form = $this->createForm(PaymentRequestType::class, $paymentRequest);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            dump($paymentRequest);
-            return new Response("Valid");
-        }
-
+        $form = $this->createForm(PaymentRequestType::class, $paymentRequest, [
+            'action' => $this->generateUrl('dotpay_request')
+        ]);
         return $this->render('default\payment-request.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/payment-status")
+     * @Route("/transaction-send-request", name="dotpay_request")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sendRequestAction(Request $request)
+    {
+        return $this->forward('dotpay.controller:requestAction');
+
+        return $this->render('default\payment-request.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/transaction-response", name="dotpay_urlc")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function statusAction(Request $request)
     {
-        $paymentStatus = $this->get('doctrine')
-            ->getManager()
-            ->getRepository('SymfonyCollectionDotpayBundle:PaymentStatus')
-            ->findOneById(1);
-
-        dump($paymentStatus);
-
-        $form = $this->createForm(PaymentStatusType::class, $paymentStatus);
-
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-
-            $this->get('doctrine')->getManager()->persist($paymentStatus);
-            $this->get('doctrine')->getManager()->flush();
-        }
-
-        return $this->render('default\payment-status.html.twig', [
-            'form' => $form->createView()
+        $paymentStatus = new PaymentStatus();
+        return $this->render('default\payment-request.html.twig', [
+            'form' => $this->createForm(PaymentStatusType::class, $paymentStatus, [
+                'action' => $this->generateUrl('dotpay_send_url')
+            ])->createView()
         ]);
     }
+
+    /**
+     * @Route("/transaction-send-response", name="dotpay_send_url")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function sendStatusAction(Request $request)
+    {
+        return $this->forward('dotpay.controller:responseAction');
+
+    }
+
+
 
 }
