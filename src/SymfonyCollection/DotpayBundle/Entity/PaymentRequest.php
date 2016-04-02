@@ -220,7 +220,8 @@ class PaymentRequest
     /**
      * @var string
      *
-     * @ORM\Column(name="error_code", type="string", length=100, nullable=true)
+     * @ORM\ManyToOne(targetEntity="ErrorCode")
+     * @ORM\JoinColumn(name="error_code_id", referencedColumnName="id", nullable=false)
      */
     private $errorCode;
 
@@ -909,11 +910,11 @@ class PaymentRequest
     /**
      * Set errorCode
      *
-     * @param string $errorCode
+     * @param ErrorCode $errorCode
      *
      * @return PaymentRequest
      */
-    public function setErrorCode($errorCode)
+    public function setErrorCode(ErrorCode $errorCode = null)
     {
         $this->errorCode = $errorCode;
 
@@ -923,7 +924,7 @@ class PaymentRequest
     /**
      * Get errorCode
      *
-     * @return string
+     * @return ErrorCode
      */
     public function getErrorCode()
     {

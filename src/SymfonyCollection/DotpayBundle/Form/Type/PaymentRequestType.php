@@ -2,9 +2,11 @@
 
 namespace SymfonyCollection\DotpayBundle\Form\Type;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use SymfonyCollection\DotpayBundle\Entity\ErrorCode;
 
 class PaymentRequestType extends AbstractType
 {
@@ -43,7 +45,6 @@ class PaymentRequestType extends AbstractType
             ->add('pInfo')
             ->add('pEmail')
             ->add('blickCode')
-            ->add('errorCode')
         ;
     }
     
