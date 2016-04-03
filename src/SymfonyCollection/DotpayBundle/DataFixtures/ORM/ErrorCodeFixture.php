@@ -14,7 +14,9 @@ class ErrorCodeFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach($this->errorCodes() as $name) {
-            $manager->persist((new ErrorCode())->setName($name));
+            $manager->persist(
+                (new ErrorCode())->setName($name)
+            );
         }
         $manager->flush();
     }

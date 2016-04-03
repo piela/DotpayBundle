@@ -14,7 +14,9 @@ class OperationTypeFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach($this->operationNames() as $name) {
-            $manager->persist((new OperationType())->setName($name));
+            $manager->persist(
+                (new OperationType())->setName($name)
+            );
         }
         $manager->flush();
     }

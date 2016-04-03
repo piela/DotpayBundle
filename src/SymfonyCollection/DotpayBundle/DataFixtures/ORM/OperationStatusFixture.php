@@ -14,7 +14,9 @@ class OperationStatusFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         foreach($this->operationStatuses() as $name) {
-            $manager->persist((new OperationStatus())->setName($name));
+            $manager->persist(
+                (new OperationStatus())->setName($name))
+            ;
         }
         $manager->flush();
     }

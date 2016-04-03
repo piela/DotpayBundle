@@ -359,6 +359,93 @@
     </class>
 
     <!--
+        SymfonyCollection\DotpayBundle\Entity\ChannelCategory
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\ChannelCategory">
+        <!--
+            ChannelCategory::name
+        -->
+        <property name="name">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>CREDIT_CARDS</value>
+                    <value>E_TRANSFERS</value>
+                    <value>ONLINE_TRANSFERS</value>
+                    <value>CASH_PAYMENTS</value>
+                    <value>MOBILE_PAYMENTS</value>
+                    <value>E_WALLET_AND_VOUCHERS</value>
+                    <value>ONLINE_INSTALLMENTS</value>
+                    <value>DEFERRED_PAYMENTS</value>
+                    <value>OTHERS</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+
+    <!--
+        SymfonyCollection\DotpayBundle\Entity\Channel
+    -->
+    <class name="SymfonyCollection\DotpayBundle\Entity\Channel">
+        <!--
+            Channel::number
+        -->
+        <property name="number">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+        <!--
+             Channel::channelCategory
+         -->
+        <property name="channelCategory">
+            <constraint name="NotNull"></constraint>
+            <constraint name="Valid" />
+        </property>
+        <!--
+             Channel::name
+         -->
+        <property name="name">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">100</option>
+            </constraint>
+        </property>
+        <!--
+             Channel::provider
+         -->
+        <property name="provider">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+            </constraint>
+        </property>
+        <!--
+             Channel::logotype
+         -->
+        <property name="logotype">
+            <constraint name="NotBlank"></constraint>
+            <constraint name="Type">
+                <option name="type">string</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+            </constraint>
+        </property>
+    </class>
+
+    <!--
         SymfonyCollection\DotpayBundle\Entity\OperationType
     -->
     <class name="SymfonyCollection\DotpayBundle\Entity\OperationType">

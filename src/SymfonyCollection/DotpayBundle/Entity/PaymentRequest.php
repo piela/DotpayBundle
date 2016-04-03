@@ -66,7 +66,8 @@ class PaymentRequest
     /**
      * @var int
      *
-     * @ORM\Column(name="channel", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Channel")
+     * @ORM\JoinColumn(name="channel_id", referencedColumnName="id", nullable=false)
      */
     private $channel;
 

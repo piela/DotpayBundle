@@ -6,7 +6,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use SymfonyCollection\DotpayBundle\Entity\ErrorCode;
+use SymfonyCollection\DotpayBundle\Entity\Channel;
 
 class PaymentRequestType extends AbstractType
 {
@@ -23,7 +23,10 @@ class PaymentRequestType extends AbstractType
             ->add('currency')
             ->add('description')
             ->add('lang')
-            ->add('channel')
+            ->add('channel', EntityType::class, [
+                'class' => Channel::class,
+                'choice_label' => 'name'
+            ])
             ->add('chLock')
             ->add('url')
             ->add('type')
