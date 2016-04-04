@@ -4,7 +4,18 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="SymfonyCollection\DotpayBundle\Entity\Payment">
+    <class name="SymfonyCollection\DotpayBundle\Entity\Payment">        
+        <!--
+            SymfonyCollection\DotpayBundle\Entity\Payment
+        -->        
+        <constraint name="SymfonyCollection\DotpayBundle\Validation\Constraints\OperationStatusChangedConstraint"/>        
+        <!--
+            Payment::operationStatus
+        -->
+        <property name="operationStatus">
+            <constraint name="NotNull"/>
+            <constraint name="Valid" />
+        </property>
         <!--
             Payment::apiVersion
         -->

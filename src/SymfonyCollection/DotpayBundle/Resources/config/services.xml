@@ -14,7 +14,7 @@
                 id="dotpay.controller"
                 class="SymfonyCollection\DotpayBundle\Controller\DotpayController"
                 shared="false"
-                autowire="true">
+                autowire="true">     
         </service>
 
         <!--

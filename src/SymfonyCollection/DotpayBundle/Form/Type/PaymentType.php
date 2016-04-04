@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use SymfonyCollection\DotpayBundle\Entity\Channel;
+use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
 
 class PaymentType extends AbstractType
 {
@@ -17,6 +18,10 @@ class PaymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('operationStatus', EntityType::class, [
+                'class' => OperationStatus::class,
+                'choice_label' => 'name'
+            ])
             ->add('apiVersion')
             ->add('merchantId')
             ->add('amount')

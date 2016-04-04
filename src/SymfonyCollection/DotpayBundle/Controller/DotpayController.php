@@ -10,7 +10,13 @@ use SymfonyCollection\DotpayBundle\Entity\Payment;
 use SymfonyCollection\DotpayBundle\Entity\PaymentHistory;
 use SymfonyCollection\DotpayBundle\Form\Type\PaymentType;
 use SymfonyCollection\DotpayBundle\Form\Type\PaymentHistoryType;
+use Symfony\Bundle\TwigBundle\TwigEngine;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * @Route(service="dotpay.controller")
+ *
+ */
 class DotpayController
 {
     /**
@@ -22,29 +28,43 @@ class DotpayController
      * @var FormFactory
      */
     private $formFactory;
-
+    
+    /**
+     * @var TwigRenderer
+     */
+    private $renderer;
+    
     /**
      * @param EventDispatcher $dispatcher
      */
-    public function __construct(EventDispatcher $dispatcher, FormFactory $formFactory)
+    public function __construct(
+        EventDispatcher $dispatcher,
+        FormFactory $formFactory,
+        TwigEngine $renderer)
     {
         $this->dispatcher = $dispatcher;
         $this->formFactory = $formFactory;
+        $this->renderer = $renderer;
     }
-
+    
     /**
      * @param Request $request
-     */
-    public function requestAction(Request $request)
+     * @Route("/payment", name="dotpay_payment")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */    
+    public function paymentAction(Request $request)
     {
         $payment = new Payment();
         $form = $this->formFactory->create(PaymentType::class, $payment);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $this->dispatcher->dispatch('dotpay.request');
+            $this->dispatcher->dispatch('dotpay.payment');
             return new Response("Request OK");
-        }
-        return new Response("Request failure");
+        }        
+        
+        return $this->renderer->renderResponse('default\payment-request.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     /**

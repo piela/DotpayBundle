@@ -243,30 +243,6 @@ class Payment
     }
 
     /**
-     * Set operationStatus
-     *
-     * @param OperationStatus $operationStatus
-     *
-     * @return Payment
-     */
-    public function setOperationStatus(OperationStatus $operationStatus)
-    {
-        $this->operationStatus = $operationStatus;
-
-        return $this;
-    }
-
-    /**
-     * Get operationStatus
-     *
-     * @return OperationStatus
-     */
-    public function getOperationStatus()
-    {
-        return $this->operationStatus;
-    }
-    
-    /**
      * Set apiVersion
      *
      * @param string $apiVersion
@@ -961,5 +937,5 @@ class Payment
     {
         return $this->errorCode;
     }
-    
+
 }

@@ -15,19 +15,10 @@ use SymfonyCollection\DotpayBundle\Form\Type\PaymentHistoryType;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/transaction-request", name="dotpay_request_form")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
+
     public function requestAction(Request $request)
     {
-        $paymentRequest = new Payment();
-        $form = $this->createForm(PaymentType::class, $paymentRequest, [
-            'action' => $this->generateUrl('dotpay_request')
-        ]);
-        return $this->render('default\payment-request.html.twig', [
-            'form' => $form->createView()
-        ]);
+
     }
 
     /**
