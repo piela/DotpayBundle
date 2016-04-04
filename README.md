@@ -1,7 +1,7 @@
 DotpayBundle
 ============
 
-**Far Far away from production yet**
+E-secure internet payments
 
 
 ## Configuration
@@ -27,16 +27,9 @@ symfony_collection_dotpay:
         pin: xxxxxxxxxxx
 ```
 
-#### Custom strategy
+#### Entity diagram
 
+![Entity diagram](https://github.com/SymfonyCollection/DotpayBundle/blob/master/src/SymfonyCollection/DotpayBundle/Resources/docs/payment.erd.png)
 
-## Dotpay controller
-
-#### Payment request
-#### Payment request error
-#### Payment response (URLC)
-
-
-## Events
 
 
