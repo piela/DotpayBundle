@@ -5,12 +5,12 @@ namespace SymfonyCollection\DotpayBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentStatus
+ * PaymentHistory
  *
- * @ORM\Table(name="dotpay_payment_status")
- * @ORM\Entity(repositoryClass="SymfonyCollection\DotpayBundle\Repository\PaymentStatusRepository")
+ * @ORM\Table(name="dotpay_payment_history")
+ * @ORM\Entity(repositoryClass="SymfonyCollection\DotpayBundle\Repository\PaymentHistoryRepository")
  */
-class PaymentStatus
+class PaymentHistory
 {
     /**
      * @var int
@@ -182,7 +182,7 @@ class PaymentStatus
      *
      * @param integer $merchantId
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setMerchantId($merchantId)
     {
@@ -206,7 +206,7 @@ class PaymentStatus
      *
      * @param string $operationNumber
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationNumber($operationNumber)
     {
@@ -230,7 +230,7 @@ class PaymentStatus
      *
      * @param OperationType $operationType
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationType(OperationType $operationType = null)
     {
@@ -254,7 +254,7 @@ class PaymentStatus
      *
      * @param string $operationStatus
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationStatus($operationStatus)
     {
@@ -278,7 +278,7 @@ class PaymentStatus
      *
      * @param string $operationAmount
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationAmount($operationAmount)
     {
@@ -302,7 +302,7 @@ class PaymentStatus
      *
      * @param string $operationCurrency
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationCurrency($operationCurrency)
     {
@@ -326,7 +326,7 @@ class PaymentStatus
      *
      * @param string $operationWithdrawalAmount
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationWithdrawalAmount($operationWithdrawalAmount)
     {
@@ -350,7 +350,7 @@ class PaymentStatus
      *
      * @param string $operationCommissionAmount
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationCommissionAmount($operationCommissionAmount)
     {
@@ -374,7 +374,7 @@ class PaymentStatus
      *
      * @param string $operationOriginalAmount
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationOriginalAmount($operationOriginalAmount)
     {
@@ -398,7 +398,7 @@ class PaymentStatus
      *
      * @param string $operationOriginalCurrency
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationOriginalCurrency($operationOriginalCurrency)
     {
@@ -422,7 +422,7 @@ class PaymentStatus
      *
      * @param \DateTime $operationDatetime
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationDatetime($operationDatetime)
     {
@@ -446,7 +446,7 @@ class PaymentStatus
      *
      * @param string $operationRelatedNumber
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setOperationRelatedNumber($operationRelatedNumber)
     {
@@ -470,7 +470,7 @@ class PaymentStatus
      *
      * @param string $control
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setControl($control)
     {
@@ -494,7 +494,7 @@ class PaymentStatus
      *
      * @param string $description
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setDescription($description)
     {
@@ -518,7 +518,7 @@ class PaymentStatus
      *
      * @param string $email
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setEmail($email)
     {
@@ -542,7 +542,7 @@ class PaymentStatus
      *
      * @param string $pInfo
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setPInfo($pInfo)
     {
@@ -566,7 +566,7 @@ class PaymentStatus
      *
      * @param string $pEmail
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setPEmail($pEmail)
     {
@@ -590,7 +590,7 @@ class PaymentStatus
      *
      * @param integer $channel
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setChannel($channel)
     {
@@ -614,7 +614,7 @@ class PaymentStatus
      *
      * @param string $channelCountry
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setChannelCountry($channelCountry)
     {
@@ -638,7 +638,7 @@ class PaymentStatus
      *
      * @param string $geoipCountry
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setGeoipCountry($geoipCountry)
     {
@@ -662,7 +662,7 @@ class PaymentStatus
      *
      * @param string $signature
      *
-     * @return PaymentStatus
+     * @return PaymentHistory
      */
     public function setSignature($signature)
     {

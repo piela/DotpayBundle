@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
 use SymfonyCollection\DotpayBundle\Entity\OperationType;
 
-class PaymentStatusType extends AbstractType
+class PaymentHistoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -55,7 +55,7 @@ class PaymentStatusType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SymfonyCollection\DotpayBundle\Entity\PaymentStatus'
+            'data_class' => 'SymfonyCollection\DotpayBundle\Entity\PaymentHistory'
         ));
     }
 }

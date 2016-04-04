@@ -6,10 +6,10 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
-use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
-use SymfonyCollection\DotpayBundle\Form\Type\PaymentRequestType;
-use SymfonyCollection\DotpayBundle\Form\Type\PaymentStatusType;
+use SymfonyCollection\DotpayBundle\Entity\Payment;
+use SymfonyCollection\DotpayBundle\Entity\PaymentHistory;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentType;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentHistoryType;
 
 class DotpayController
 {
@@ -37,8 +37,8 @@ class DotpayController
      */
     public function requestAction(Request $request)
     {
-        $payment = new PaymentRequest();
-        $form = $this->formFactory->create(PaymentRequestType::class, $payment);
+        $payment = new Payment();
+        $form = $this->formFactory->create(PaymentType::class, $payment);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->dispatcher->dispatch('dotpay.request');
@@ -52,8 +52,8 @@ class DotpayController
      */
     public function responseAction(Request $request)
     {
-        $paymentStatus = new PaymentStatus();
-        $form = $this->formFactory->create(PaymentStatusType::class, $paymentStatus);
+        $paymentStatus = new PaymentHistory();
+        $form = $this->formFactory->create(PaymentHistoryType::class, $paymentStatus);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->dispatcher->dispatch('dotpay.response');

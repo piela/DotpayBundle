@@ -5,7 +5,7 @@ namespace SymfonyCollection\DotpayBundle\Validation\Validators;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use SymfonyCollection\DotpayBundle\Credentials\EstablishedCredentials;
-use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Entity\PaymentHistory;
 use SymfonyCollection\DotpayBundle\Credentials\Credentials;
 
 class CheckSumValidator extends ConstraintValidator
@@ -26,7 +26,7 @@ class CheckSumValidator extends ConstraintValidator
         }
     }
 
-    private function validateCheckSum(PaymentStatus $status, Credentials $credentials)
+    private function validateCheckSum(PaymentHistory $status, Credentials $credentials)
     {
         return $status->getSignature() == hash('sha256', sprintf(
             '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s',

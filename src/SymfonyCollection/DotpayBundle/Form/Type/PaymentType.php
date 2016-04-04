@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use SymfonyCollection\DotpayBundle\Entity\Channel;
 
-class PaymentRequestType extends AbstractType
+class PaymentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -57,7 +57,7 @@ class PaymentRequestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SymfonyCollection\DotpayBundle\Entity\PaymentRequest'
+            'data_class' => 'SymfonyCollection\DotpayBundle\Entity\Payment'
         ));
     }
 }

@@ -6,7 +6,7 @@ namespace SymfonyCollection\DotpayBundle\Entity;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass SymfonyCollection\DotpayBundle\Entity\PaymentRequest
+ * @coversDefaultClass SymfonyCollection\DotpayBundle\Entity\Payment
  */
 class PaymentRequestTest extends PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class PaymentRequestTest extends PHPUnit_Framework_TestCase
     {
         $this->assertSame(
             'dev',
-            (new PaymentRequest())->setApiVersion('dev')->getApiVersion()
+            (new Payment())->setApiVersion('dev')->getApiVersion()
         );
     }
 

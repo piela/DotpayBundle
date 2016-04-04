@@ -4,9 +4,9 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <class name="SymfonyCollection\DotpayBundle\Entity\PaymentRequest">
+    <class name="SymfonyCollection\DotpayBundle\Entity\Payment">
         <!--
-            PaymentRequest::apiVersion
+            Payment::apiVersion
         -->
         <property name="apiVersion">
             <constraint name="Type">
@@ -19,7 +19,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::merchantId
+             Payment::merchantId
         -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
@@ -32,7 +32,7 @@
             </constraint>
         </property>
         <!--
-            PaymentRequest::amount
+            Payment::amount
         -->
         <property name="amount">
             <constraint name="NotBlank"/>
@@ -49,7 +49,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::currency
+             Payment::currency
         -->
         <property name="currency">
             <constraint name="NotBlank"/>
@@ -66,7 +66,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::description
+             Payment::description
         -->
         <property name="description">
             <constraint name="NotBlank"/>
@@ -79,7 +79,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::lang
+             Payment::lang
         -->
         <property name="lang">
             <constraint name="Choice">
@@ -97,12 +97,12 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::channel
+             Payment::channel
         -->
         <!--property name="channel">
         </property!-->
         <!--
-             PaymentRequest::chLock
+             Payment::chLock
         -->
         <property name="chLock">
             <constraint name="Type">
@@ -110,12 +110,12 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::chanelGroups
+             Payment::chanelGroups
         -->
         <!--property name="channelGroups">
         </property!-->
         <!--
-             PaymentRequest::url
+             Payment::url
         -->
         <property name="url">
             <constraint name="Type">
@@ -128,7 +128,7 @@
             <constraint name="Url"/>
         </property>
         <!--
-             PaymentRequest::type
+             Payment::type
         -->
         <property name="type">
             <constraint name="Type">
@@ -140,7 +140,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::type
+             Payment::type
         -->
         <property name="buttontext">
             <constraint name="Type">
@@ -152,7 +152,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::urlc
+             Payment::urlc
         -->
         <property name="urlc">
             <constraint name="Type">
@@ -164,7 +164,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::control
+             Payment::control
         -->
         <property name="control">
             <constraint name="Type">
@@ -176,7 +176,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::firstName
+             Payment::firstName
         -->
         <property name="firstname">
             <constraint name="Type">
@@ -188,7 +188,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::lastName
+             Payment::lastName
         -->
         <property name="lastname">
             <constraint name="Type">
@@ -200,7 +200,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::email
+             Payment::email
         -->
         <property name="email">
             <constraint name="Type">
@@ -213,7 +213,7 @@
             <constraint name="Email"/>
         </property>
         <!--
-            PaymentRequest::street
+            Payment::street
         -->
         <property name="street">
             <constraint name="Type">
@@ -225,7 +225,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::streetN1
+             Payment::streetN1
         -->
         <property name="streetN1">
             <constraint name="Type">
@@ -237,7 +237,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::streetN2
+             Payment::streetN2
         -->
         <property name="streetN2">
             <constraint name="Type">
@@ -249,7 +249,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::state
+             Payment::state
         -->
         <property name="state">
             <constraint name="Type">
@@ -261,7 +261,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::addr3
+             Payment::addr3
         -->
         <property name="addr3">
             <constraint name="Type">
@@ -273,7 +273,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::city
+             Payment::city
         -->
         <property name="city">
             <constraint name="Type">
@@ -285,7 +285,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::postcode
+             Payment::postcode
         -->
         <property name="postcode">
             <constraint name="Type">
@@ -297,7 +297,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::phone
+             Payment::phone
         -->
         <property name="phone">
             <constraint name="Type">
@@ -309,13 +309,13 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::country
+             Payment::country
         -->
         <property name="country">
             <constraint name="Country" />
         </property>
         <!--
-             PaymentRequest::pInfo
+             Payment::pInfo
         -->
         <property name="pInfo">
             <constraint name="Type">
@@ -327,7 +327,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::pEmail
+             Payment::pEmail
         -->
         <property name="pEmail">
             <constraint name="Type">
@@ -339,7 +339,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::blickCode
+             Payment::blickCode
         -->
         <property name="blickCode">
             <constraint name="Type">
@@ -351,7 +351,7 @@
             </constraint>
         </property>
         <!--
-             PaymentRequest::errorCode
+             Payment::errorCode
         -->
         <property name="errorCode">
             <constraint name="Valid" />
@@ -516,13 +516,13 @@
     </class>
 
     <!--
-        SymfonyCollection\DotpayBundle\Entity\PaymentStatus
+        SymfonyCollection\DotpayBundle\Entity\PaymentHistory
     -->
-    <class name="SymfonyCollection\DotpayBundle\Entity\PaymentStatus">
+    <class name="SymfonyCollection\DotpayBundle\Entity\PaymentHistory">
 
         <constraint name="SymfonyCollection\DotpayBundle\Validation\Constraints\OperationStatusChangedConstraint"/>
         <!--
-            PaymentStatus::merchantId
+            PaymentHistory::merchantId
         -->
         <property name="merchantId">
             <constraint name="NotBlank"/>
@@ -535,7 +535,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationNumber
+            PaymentHistory::operationNumber
         -->
         <property name="operationNumber">
             <constraint name="NotBlank"/>
@@ -544,21 +544,21 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationType
+            PaymentHistory::operationType
         -->
         <property name="operationType">
             <constraint name="NotNull"/>
             <constraint name="Valid" />
         </property>
         <!--
-            PaymentStatus::operationType
+            PaymentHistory::operationType
         -->
         <property name="operationStatus">
             <constraint name="NotNull"/>
             <constraint name="Valid" />
         </property>
         <!--
-            PaymentStatus::operationAmount
+            PaymentHistory::operationAmount
         -->
         <property name="operationAmount">
             <constraint name="NotBlank"/>
@@ -572,14 +572,14 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationCurrency
+            PaymentHistory::operationCurrency
         -->
         <property name="operationCurrency">
             <constraint name="NotBlank"/>
             <constraint name="Currency" />
         </property>
         <!--
-            PaymentStatus::operationWithdrawalAmount
+            PaymentHistory::operationWithdrawalAmount
         -->
         <property name="operationWithdrawalAmount">
             <constraint name="Length">
@@ -592,7 +592,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationCommissionAmount
+            PaymentHistory::operationCommissionAmount
         -->
         <property name="operationCommissionAmount">
             <constraint name="Type">
@@ -607,7 +607,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationOriginalAmount
+            PaymentHistory::operationOriginalAmount
         -->
         <property name="operationOriginalAmount">
             <constraint name="NotBlank"/>
@@ -621,7 +621,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationOriginalCurrency
+            PaymentHistory::operationOriginalCurrency
         -->
         <property name="operationOriginalCurrency">
             <constraint name="NotBlank"/>
@@ -638,14 +638,14 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::operationDatetime
+            PaymentHistory::operationDatetime
         -->
         <property name="operationDatetime">
             <constraint name="NotNull"/>
             <constraint name="DateTime" />
         </property>
         <!--
-            PaymentStatus::operationRelatedNumber
+            PaymentHistory::operationRelatedNumber
         -->
         <property name="operationRelatedNumber">
             <constraint name="NotBlank"/>
@@ -654,7 +654,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::control
+            PaymentHistory::control
         -->
         <property name="control">
             <constraint name="NotBlank"/>
@@ -667,7 +667,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::description
+            PaymentHistory::description
         -->
         <property name="description">
             <constraint name="NotBlank"/>
@@ -680,7 +680,7 @@
             </constraint>
         </property>
         <!--
-            PaymentStatus::email
+            PaymentHistory::email
         -->
         <property name="email">
             <constraint name="NotBlank"/>
@@ -694,7 +694,7 @@
             <constraint name="Email"/>
         </property>
         <!--
-             PaymentStatus::pInfo
+             PaymentHistory::pInfo
         -->
         <property name="pInfo">
             <constraint name="Type">
@@ -706,7 +706,7 @@
             </constraint>
         </property>
         <!--
-             PaymentStatus::pEmail
+             PaymentHistory::pEmail
         -->
         <property name="pEmail">
             <constraint name="Type">

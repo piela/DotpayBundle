@@ -32,9 +32,9 @@ symfony_collection_dotpay:
 
 ## Dotpay controller
 
-#### Transaction request
-#### Transaction request error
-#### Transaction response (URLC)
+#### Payment request
+#### Payment request error
+#### Payment response (URLC)
 
 
 ## Events

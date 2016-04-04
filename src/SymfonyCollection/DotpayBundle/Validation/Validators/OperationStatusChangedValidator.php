@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
-use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Entity\PaymentHistory;
 
 /**
  * @package SymfonyCollection\DotpayBundle\Validation
@@ -28,7 +28,7 @@ class OperationStatusChangedValidator extends ConstraintValidator
     }
 
     /**
-     * @param PaymentStatus $operationStatus
+     * @param PaymentHistory $operationStatus
      * @param Constraint $constraint
      */
     public function validate($paymentStatus, Constraint $constraint)
@@ -45,7 +45,7 @@ class OperationStatusChangedValidator extends ConstraintValidator
      * @return bool
      * @todo Ensure that operationStatus index exists - is it possible in stable release?
      */
-    private function validateOperationStatusChange(PaymentStatus $paymentStatus)
+    private function validateOperationStatusChange(PaymentHistory $paymentStatus)
     {
         $originalEntityData = $this->manager->getUnitOfWork()->getOriginalEntityData(
             $paymentStatus

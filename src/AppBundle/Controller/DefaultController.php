@@ -7,11 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use SymfonyCollection\DotpayBundle\Entity\ErrorCode;
-use SymfonyCollection\DotpayBundle\Entity\PaymentRequest;
-use SymfonyCollection\DotpayBundle\Entity\PaymentStatus;
+use SymfonyCollection\DotpayBundle\Entity\Payment;
+use SymfonyCollection\DotpayBundle\Entity\PaymentHistory;
 use SymfonyCollection\DotpayBundle\Form\Type\OperationTypeType;
-use SymfonyCollection\DotpayBundle\Form\Type\PaymentRequestType;
-use SymfonyCollection\DotpayBundle\Form\Type\PaymentStatusType;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentType;
+use SymfonyCollection\DotpayBundle\Form\Type\PaymentHistoryType;
 
 class DefaultController extends Controller
 {
@@ -21,8 +21,8 @@ class DefaultController extends Controller
      */
     public function requestAction(Request $request)
     {
-        $paymentRequest = new PaymentRequest();
-        $form = $this->createForm(PaymentRequestType::class, $paymentRequest, [
+        $paymentRequest = new Payment();
+        $form = $this->createForm(PaymentType::class, $paymentRequest, [
             'action' => $this->generateUrl('dotpay_request')
         ]);
         return $this->render('default\payment-request.html.twig', [
@@ -51,9 +51,9 @@ class DefaultController extends Controller
      */
     public function statusAction(Request $request)
     {
-        $paymentStatus = new PaymentStatus();
+        $paymentStatus = new PaymentHistory();
         return $this->render('default\payment-request.html.twig', [
-            'form' => $this->createForm(PaymentStatusType::class, $paymentStatus, [
+            'form' => $this->createForm(PaymentHistoryType::class, $paymentStatus, [
                 'action' => $this->generateUrl('dotpay_send_url')
             ])->createView()
         ]);

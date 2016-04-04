@@ -5,12 +5,12 @@ namespace SymfonyCollection\DotpayBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentRequest
+ * Payment
  *
- * @ORM\Table(name="dotpay_payment_request")
- * @ORM\Entity(repositoryClass="SymfonyCollection\DotpayBundle\Repository\PaymentRequestRepository")
+ * @ORM\Table(name="dotpay_payment")
+ * @ORM\Entity(repositoryClass="SymfonyCollection\DotpayBundle\Repository\PaymentRepository")
  */
-class PaymentRequest
+class Payment
 {
     /**
      * @var int
@@ -241,7 +241,7 @@ class PaymentRequest
      *
      * @param string $apiVersion
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setApiVersion($apiVersion)
     {
@@ -265,7 +265,7 @@ class PaymentRequest
      *
      * @param integer $merchantId
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setMerchantId($merchantId)
     {
@@ -289,7 +289,7 @@ class PaymentRequest
      *
      * @param string $amount
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setAmount($amount)
     {
@@ -313,7 +313,7 @@ class PaymentRequest
      *
      * @param string $currency
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setCurrency($currency)
     {
@@ -337,7 +337,7 @@ class PaymentRequest
      *
      * @param string $description
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setDescription($description)
     {
@@ -361,7 +361,7 @@ class PaymentRequest
      *
      * @param string $lang
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setLang($lang)
     {
@@ -385,7 +385,7 @@ class PaymentRequest
      *
      * @param integer $channel
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setChannel($channel)
     {
@@ -409,7 +409,7 @@ class PaymentRequest
      *
      * @param boolean $chLock
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setChLock($chLock)
     {
@@ -433,7 +433,7 @@ class PaymentRequest
      *
      * @param string $url
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setUrl($url)
     {
@@ -457,7 +457,7 @@ class PaymentRequest
      *
      * @param integer $type
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setType($type)
     {
@@ -481,7 +481,7 @@ class PaymentRequest
      *
      * @param string $buttontext
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setButtontext($buttontext)
     {
@@ -505,7 +505,7 @@ class PaymentRequest
      *
      * @param string $urlc
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setUrlc($urlc)
     {
@@ -529,7 +529,7 @@ class PaymentRequest
      *
      * @param string $control
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setControl($control)
     {
@@ -553,7 +553,7 @@ class PaymentRequest
      *
      * @param string $firstname
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setFirstname($firstname)
     {
@@ -577,7 +577,7 @@ class PaymentRequest
      *
      * @param string $lastname
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setLastname($lastname)
     {
@@ -601,7 +601,7 @@ class PaymentRequest
      *
      * @param string $email
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setEmail($email)
     {
@@ -625,7 +625,7 @@ class PaymentRequest
      *
      * @param string $street
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setStreet($street)
     {
@@ -649,7 +649,7 @@ class PaymentRequest
      *
      * @param string $streetN1
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setStreetN1($streetN1)
     {
@@ -673,7 +673,7 @@ class PaymentRequest
      *
      * @param string $streetN2
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setStreetN2($streetN2)
     {
@@ -697,7 +697,7 @@ class PaymentRequest
      *
      * @param string $state
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setState($state)
     {
@@ -721,7 +721,7 @@ class PaymentRequest
      *
      * @param string $addr3
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setAddr3($addr3)
     {
@@ -745,7 +745,7 @@ class PaymentRequest
      *
      * @param string $city
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setCity($city)
     {
@@ -769,7 +769,7 @@ class PaymentRequest
      *
      * @param string $postcode
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setPostcode($postcode)
     {
@@ -793,7 +793,7 @@ class PaymentRequest
      *
      * @param string $phone
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setPhone($phone)
     {
@@ -817,7 +817,7 @@ class PaymentRequest
      *
      * @param string $country
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setCountry($country)
     {
@@ -841,7 +841,7 @@ class PaymentRequest
      *
      * @param string $pInfo
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setPInfo($pInfo)
     {
@@ -865,7 +865,7 @@ class PaymentRequest
      *
      * @param string $pEmail
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setPEmail($pEmail)
     {
@@ -889,7 +889,7 @@ class PaymentRequest
      *
      * @param string $blickCode
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setBlickCode($blickCode)
     {
@@ -913,7 +913,7 @@ class PaymentRequest
      *
      * @param ErrorCode $errorCode
      *
-     * @return PaymentRequest
+     * @return Payment
      */
     public function setErrorCode(ErrorCode $errorCode = null)
     {
