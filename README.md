@@ -1,7 +1,7 @@
 DotpayBundle
 ============
 
-E-secure internet payments
+E-secure payments in Internet services
 
 
 ## Enviroment
