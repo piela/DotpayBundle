@@ -1,10 +1,10 @@
 DotpayBundle
 ============
 
-E-secure internet payments
+E-secure payments in Internet services
 
 
-## Configuration
+## Enviroment
 
 #### Parameters strategy
 ```yml
@@ -27,7 +27,7 @@ symfony_collection_dotpay:
         pin: xxxxxxxxxxx
 ```
 
-#### Entity diagram
+## Entity diagram
 
 ![Entity diagram](https://github.com/SymfonyCollection/DotpayBundle/blob/master/src/SymfonyCollection/DotpayBundle/Resources/docs/payment.erd.png)
 
