@@ -40,12 +40,12 @@ class OperationStatusChangedValidator extends ConstraintValidator
     }
 
     /**
+     *
      * @param OperationStatus $status
      * @param string $newStatus
      * @return bool
-     * @todo Ensure that operationStatus index exists - is it possible in stable release?
      */
-    private function validateOperationStatusChange(Payment $paymentStatus)
+    private function validateOperationStatusChange($paymentStatus)
     {
         
         $originalEntityData = $this->manager->getUnitOfWork()->getOriginalEntityData(
@@ -54,6 +54,7 @@ class OperationStatusChangedValidator extends ConstraintValidator
         if (! isset($originalEntityData['operationStatus'])) {
             return true;
         }
+        dump($originalEntityData['operationStatus']);
         $originalStatusName = $originalEntityData['operationStatus']->getName();
         $operationStatus = $paymentStatus->getOperationStatus()->getName();
 

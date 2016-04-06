@@ -530,8 +530,17 @@
         SymfonyCollection\DotpayBundle\Entity\PaymentHistory
     -->
     <class name="SymfonyCollection\DotpayBundle\Entity\PaymentHistory">
-
+        <!--
+            SymfonyCollection\DotpayBundle\Entity\PaymentHistory
+        -->
         <constraint name="SymfonyCollection\DotpayBundle\Validation\Constraints\OperationStatusChangedConstraint"/>
+        <!--
+            PaymentHistory::payment
+        -->
+        <property name="payment">
+            <constraint name="NotNull"/>
+            <constraint name="Valid" />
+        </property>
         <!--
             PaymentHistory::merchantId
         -->

@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use SymfonyCollection\DotpayBundle\Entity\OperationStatus;
 use SymfonyCollection\DotpayBundle\Entity\OperationType;
+use SymfonyCollection\DotpayBundle\Entity\Payment;
 
 class PaymentHistoryType extends AbstractType
 {
@@ -19,6 +20,10 @@ class PaymentHistoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('payment', EntityType::class, [
+                'class' => Payment::class,
+                'choice_label' => 'id'
+            ])
             ->add('merchantId')
             ->add('operationNumber')
             ->add('operationType', EntityType::class, [

@@ -30,7 +30,7 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="api_version", type="string", length=20)
+     * @ORM\Column(name="api_version", type="string", length=20, nullable=true)
      */
     private $apiVersion;
 
@@ -83,6 +83,13 @@ class Payment
      * @ORM\Column(name="ch_lock", type="boolean", nullable=true)
      */
     private $chLock;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="channel_groups", type="simple_array")
+     */
+    private $channelGroups;
 
     /**
      * @var string
@@ -228,7 +235,7 @@ class Payment
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="ErrorCode")
-     * @ORM\JoinColumn(name="error_code_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="error_code_id", referencedColumnName="id", nullable=true)
      */
     private $errorCode;
 
@@ -458,6 +465,30 @@ class Payment
         return $this->chLock;
     }
 
+    /**
+     * Set channelGroups
+     *
+     * @param array $channelGroups
+     *
+     * @return Payment
+     */
+    public function setChannelGroups(array $channelGroups)
+    {
+        $this->channelGroups = $channelGroups;
+
+        return $this;
+    }
+
+    /**
+     * Get channelGroups
+     *
+     * @return array
+     */
+    public function getChannelGroups()
+    {
+        return $this->channelGroups;
+    }
+    
     /**
      * Set url
      *
@@ -961,5 +992,5 @@ class Payment
     {
         return $this->errorCode;
     }
-    
+
 }

@@ -22,6 +22,12 @@ class PaymentHistory
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Payment")
+     * @ORM\JoinColumn(name="payment_id", referencedColumnName="id", nullable=false)
+     */
+    private $payment;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="merchant_id", type="integer")
@@ -175,6 +181,30 @@ class PaymentHistory
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set payment
+     *
+     * @param Payment $payment
+     *
+     * @return PaymentHistory
+     */
+    public function setPayment(Payment $payment)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
     }
 
     /**
