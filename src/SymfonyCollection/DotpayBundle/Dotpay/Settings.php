@@ -4,7 +4,7 @@
 namespace SymfonyCollection\DotpayBundle\Dotpay;
 
 
-class DotpaySettings
+class Settings
 {
     /**
      * @var string
