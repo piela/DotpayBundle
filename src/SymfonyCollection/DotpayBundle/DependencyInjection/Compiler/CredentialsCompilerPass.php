@@ -18,12 +18,6 @@ class CredentialsCompilerPass implements CompilerPassInterface
         }
 
         $establishedCredentials[] = new Definition(
-            'SymfonyCollection\DotpayBundle\Credentials\ParametersCredentials', [
-                new Reference('service_container')
-            ]
-        );
-
-        $establishedCredentials[] = new Definition(
             'SymfonyCollection\DotpayBundle\Credentials\ExtensionCredentials', [
                 new Reference('service_container')
             ]
