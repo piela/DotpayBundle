@@ -4,6 +4,9 @@
 namespace SymfonyCollection\DotpayBundle\Dotpay;
 
 
+/**
+ * Settings
+ */
 class Settings
 {
     /**
@@ -12,11 +15,17 @@ class Settings
     private $ip;
 
     /**
-     * DotpayConfig constructor.
+     * @var string
+     */
+    private $api;
+
+    /**
+     * @param string $api
      * @param string $ip
      */
-    public function __construct($ip)
+    public function __construct($api, $ip)
     {
+        $this->api = $api;
         $this->ip = $ip;
     }
 
@@ -26,6 +35,14 @@ class Settings
     public function ip()
     {
         return $this->ip;
+    }
+
+    /**
+     * @return string
+     */
+    public function api()
+    {
+        return $this->api;
     }
 
 }

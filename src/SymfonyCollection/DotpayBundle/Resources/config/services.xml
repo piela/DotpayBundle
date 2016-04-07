@@ -6,6 +6,14 @@
 
     <services>
 
+        <service
+                id="dotpay.settings"
+                class="SymfonyCollection\DotpayBundle\Dotpay\Settings"
+                shared="true">
+            <argument>%dotpay.api%</argument>
+            <argument>%dotpay.ip%</argument>
+        </service>
+
         <!--
             Controller
         -->

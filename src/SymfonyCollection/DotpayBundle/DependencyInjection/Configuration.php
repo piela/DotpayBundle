@@ -27,6 +27,8 @@ class Configuration implements ConfigurationInterface
             ->integerNode('id')
             ->end()
             ->scalarNode('ip')
+            ->end()
+            ->scalarNode('api')
             ->end();
 
         // Here you should define the parameters that are allowed to
