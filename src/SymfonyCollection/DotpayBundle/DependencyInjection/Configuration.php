@@ -22,9 +22,11 @@ class Configuration implements ConfigurationInterface
         $treeBuilder
             ->root('symfony_bundles_dotpay')
             ->children()
-            ->integerNode('pin')
+            ->scalarNode('pin')
             ->end()
             ->integerNode('id')
+            ->end()
+            ->scalarNode('ip')
             ->end();
 
         // Here you should define the parameters that are allowed to

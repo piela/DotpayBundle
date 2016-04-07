@@ -31,8 +31,8 @@ class ExtensionCredentials implements EstablishedCredentials
     public function credentials()
     {
         return new Credentials(
-            $this->container->getParameter('symfony_bundles_dotpay_id'),
-            $this->container->getParameter('symfony_bundles_dotpay_pin')
+            $this->container->getParameter('dotpay.id'),
+            $this->container->getParameter('dotpay.pin')
         );
     }
 }

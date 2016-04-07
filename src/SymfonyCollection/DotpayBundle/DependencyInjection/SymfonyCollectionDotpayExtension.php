@@ -22,12 +22,9 @@ class SymfonyCollectionDotpayExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        if (isset($configs[0]['pin'])) {
-            $container->setParameter('symfony_bundles_dotpay_pin', $configs[0]['pin']);
-        }
-        if (isset($configs[0]['id'])) {
-            $container->setParameter('symfony_bundles_dotpay_id', $configs[0]['id']);
-        }
+        $container->setParameter('dotpay.pin', isset($configs[0]['pin']) ? $configs[0]['pin'] : '');
+        $container->setParameter('dotpay.id', isset($configs[0]['id']) ? $configs[0]['id'] : null);
+        $container->setParameter('dotpay.ip', isset($configs[0]['ip']) ? $configs[0]['ip'] : '');
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
