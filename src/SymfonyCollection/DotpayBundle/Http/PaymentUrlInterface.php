@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Dotpay;
+namespace SymfonyCollection\DotpayBundle\Http;
 
 interface PaymentUrlInterface
 {

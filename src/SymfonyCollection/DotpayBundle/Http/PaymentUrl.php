@@ -1,7 +1,8 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Dotpay;
+namespace SymfonyCollection\DotpayBundle\Http;
 
+use SymfonyCollection\DotpayBundle\Entity\ChannelCategory;
 use SymfonyCollection\DotpayBundle\Credentials\EstablishedCredentials;
 use SymfonyCollection\DotpayBundle\Entity\Payment;
 
@@ -67,8 +68,9 @@ class PaymentUrl implements PaymentUrlInterface
         $queryParameters[] = ('' != $payment->getCurrency()) ? sprintf('currency=%s', rawurlencode($payment->getCurrency())): '';
         $queryParameters[] = ('' != $payment->getDescription()) ? sprintf('description=%s', rawurlencode($payment->getDescription())): '';
         $queryParameters[] = ('' != $payment->getLang()) ? sprintf('lang=%s', rawurlencode($payment->getLang())): '';
-        $queryParameters[] = (null != $payment->getChannel()) ? sprintf('channel=%s', rawurlencode($payment->getChannel()->getNumber())): '';
+        $queryParameters[] = (null != $payment->getChannel()) ? sprintf('channel=%s', rawurlencode($this->channelGroups($payment))): '';
         $queryParameters[] = (true === $payment->getChLock()) ? 'ch_lock=1' : 'ch_lock=0';
+        $queryParameters[] = (0 < count($payment->getChannelGroups())) ? sprintf('channel_groups=%s', rawurlencode($this->channelGroups($payment))) : '';
         $queryParameters[] = ('' !== $payment->getUrl()) ? sprintf('url=%s', rawurlencode($payment->getUrl())): '';
         $queryParameters[] = ('' !== $payment->getType()) ? sprintf('type=%s', rawurlencode($payment->getType())): '';
         $queryParameters[] = ('' != $payment->getButtontext()) ? sprintf('buttontext=%s', rawurlencode($payment->getButtontext())): '';
@@ -97,6 +99,23 @@ class PaymentUrl implements PaymentUrlInterface
             )
         );
 
+    }
+
+    /**
+     * @param Payment $payment
+     * @return string
+     */
+    private function channelGroups(Payment $payment)
+    {
+        return implode(
+            ',',
+            array_map(
+                function(ChannelCategory $category) {
+                    return $category->getSymbol();
+                },
+                $payment->getChannelGroups()->toArray()
+            )
+        );
     }
 
 }
