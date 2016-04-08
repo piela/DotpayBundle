@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Dotpay;
+namespace SymfonyCollection\DotpayBundle\Signature;
 
 use SymfonyCollection\DotpayBundle\Entity\Payment;
 
