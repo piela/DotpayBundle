@@ -1,13 +1,13 @@
 <?php
 
 
-namespace SymfonyCollection\DotpayBundle\Dotpay;
+namespace SymfonyCollection\DotpayBundle\Settings;
 
 
 /**
- * Settings
+ * DotpaySettings
  */
-class Settings implements SettingsInterface
+class DotpaySettings implements DotpaySettingsInterface
 {
     /**
      * @var string

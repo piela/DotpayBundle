@@ -1,8 +1,8 @@
 <?php
 
-namespace SymfonyCollection\DotpayBundle\Dotpay;
+namespace SymfonyCollection\DotpayBundle\Settings;
 
-interface SettingsInterface
+interface DotpaySettingsInterface
 {
     /**
      * @return string
