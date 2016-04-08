@@ -3,6 +3,7 @@
 namespace SymfonyCollection\DotpayBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Payment
@@ -85,9 +86,13 @@ class Payment
     private $chLock;
 
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="channel_groups", type="simple_array")
+     * @ORM\ManyToMany(targetEntity="ChannelCategory")
+     * @ORM\JoinTable(name="dotpay_channel_groups",
+     *      joinColumns={@ORM\JoinColumn(name="payment_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="channel_category_id", referencedColumnName="id", unique=true)}
+     *      )
      */
     private $channelGroups;
 
@@ -238,6 +243,14 @@ class Payment
      * @ORM\JoinColumn(name="error_code_id", referencedColumnName="id", nullable=true)
      */
     private $errorCode;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->channelGroups = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -465,24 +478,35 @@ class Payment
         return $this->chLock;
     }
 
+
     /**
-     * Set channelGroups
+     * Add channelGroup
      *
-     * @param array $channelGroups
+     * @param Channel $channelGroup
      *
      * @return Payment
      */
-    public function setChannelGroups(array $channelGroups)
+    public function addChannelGroup(Channel $channelGroup)
     {
-        $this->channelGroups = $channelGroups;
+        $this->channelGroups[] = $channelGroup;
 
         return $this;
     }
 
     /**
+     * Remove channelGroup
+     *
+     * @param Channel $channelGroup
+     */
+    public function removeChannelGroup(Channel $channelGroup)
+    {
+        $this->channelGroups->removeElement($channelGroup);
+    }
+
+    /**
      * Get channelGroups
      *
-     * @return array
+     * @return ArrayCollection
      */
     public function getChannelGroups()
     {
