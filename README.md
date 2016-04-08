@@ -4,24 +4,13 @@ DotpayBundle
 E-secure payments in Internet services
 
 
-## Enviroment
+## Configuration
 
-#### Parameters strategy
-```yml
-# app/config/config.yml
-
-parameters:
-    dotpay:
-        credentials:
-            id: xxxxx
-            pin: xxxxxxxxxxx
-```
-
-#### Extension strategy
-```yml
 # app/config/config.yml
 
 symfony_collection_dotpay:
+    ip: 195.150.9.37
+    api: dev
     credentials:
         id: xxxxx
         pin: xxxxxxxxxxx
