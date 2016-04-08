@@ -22,9 +22,9 @@ class ChannelCategoryFixture implements FixtureInterface, OrderedFixtureInterfac
      */
     public function load(ObjectManager $manager)
     {
-        foreach($this->categories() as $name) {
+        foreach($this->categories() as $category) {
             $manager->persist(
-                (new ChannelCategory())->setName($name)
+                (new ChannelCategory())->setName($category[0])->setSymbol($category[1])
             );
         }
         $manager->flush();
@@ -36,15 +36,14 @@ class ChannelCategoryFixture implements FixtureInterface, OrderedFixtureInterfac
     private function categories()
     {
         return [
-            'CREDIT_CARDS',
-            'E_TRANSFERS',
-            'ONLINE_TRANSFERS',
-            'CASH_PAYMENTS',
-            'MOBILE_PAYMENTS',
-            'E_WALLET_AND_VOUCHERS',
-            'ONLINE_INSTALLMENTS',
-            'DEFERRED_PAYMENTS',
-            'OTHERS'
+            ['CREDIT_CARDS', 'K'],
+            ['E_TRANSFERS', 'T'],
+            ['ONLINE_TRANSFERS', 'P'],
+            ['CASH_PAYMENTS', 'G'],
+            ['E_WALLET_AND_VOUCHERS', 'W'],
+            ['ONLINE_INSTALLMENTS', 'R'],
+            ['DEFERRED_PAYMENTS', 'O'],
+            ['OTHERS', 'I']
         ];
     }
 }

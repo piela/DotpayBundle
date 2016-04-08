@@ -28,6 +28,12 @@ class ChannelCategory
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="symbol", type="string", length=1)
+     */
+    private $symbol;
 
     /**
      * Get id
@@ -62,5 +68,28 @@ class ChannelCategory
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set symbol
+     *
+     * @param string $symbol
+     *
+     * @return ChannelCategory
+     */
+    public function setSymbol($symbol)
+    {
+        $this->symbol = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Get symbol
+     *
+     * @return string
+     */
+    public function getSymbol()
+    {
+        return $this->symbol;
+    }
+}
