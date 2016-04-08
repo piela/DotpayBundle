@@ -7,7 +7,7 @@ namespace SymfonyCollection\DotpayBundle\Dotpay;
 /**
  * Settings
  */
-class Settings
+class Settings implements SettingsInterface
 {
     /**
      * @var string
