@@ -20,7 +20,7 @@ symfony_collection_dotpay:
         pin: xxxxxxxxxxx
 ```
 
-## Entity diagram
+## Entity Relation Diagram
 
 ![Entity diagram](https://github.com/SymfonyCollection/DotpayBundle/blob/master/src/SymfonyCollection/DotpayBundle/Resources/docs/payment.erd.png)
 
