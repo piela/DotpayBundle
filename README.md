@@ -8,6 +8,7 @@ E-secure payments in Internet services
 
 # app/config/config.yml
 
+```yml
 symfony_collection_dotpay:
     ip: 195.150.9.37
     api: dev
