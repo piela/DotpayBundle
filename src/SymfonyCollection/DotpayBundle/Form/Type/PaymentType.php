@@ -2,6 +2,7 @@
 
 namespace SymfonyCollection\DotpayBundle\Form\Type;
 
+use Proxies\__CG__\SymfonyCollection\DotpayBundle\Entity\ChannelCategory;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -35,7 +36,11 @@ class PaymentType extends AbstractType
                 'choice_label' => 'name'
             ])
             ->add('chLock')
-            //->add('channelGroups')
+            ->add('channelGroups', EntityType::class, [
+                'class' => ChannelCategory::class,
+                'choice_label' => 'name',
+                'multiple' => true
+            ])
             ->add('url')
             ->add('type')
             ->add('buttontext')
