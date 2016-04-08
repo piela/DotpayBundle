@@ -5,7 +5,7 @@ namespace SymfonyCollection\DotpayBundle\Dotpay;
 use SymfonyCollection\DotpayBundle\Credentials\EstablishedCredentials;
 use SymfonyCollection\DotpayBundle\Entity\Payment;
 
-class PaymentUrl
+class PaymentUrl implements PaymentUrlInterface
 {
     /**
      * @var string
@@ -62,35 +62,40 @@ class PaymentUrl
         $payment = $this->payment;
 
         $queryParameters = [];
-        $queryParameters[] = ('' != $payment->getMerchantId()) ? sprintf('id=%s', $payment->getMerchantId()): '';
-        $queryParameters[] = ('' != $payment->getAmount()) ? sprintf('amount=%.2f', $payment->getAmount()): '';
-        $queryParameters[] = ('' != $payment->getCurrency()) ? sprintf('currency=%s', $payment->getCurrency()): '';
-        $queryParameters[] = ('' != $payment->getDescription()) ? sprintf('description=%s', $payment->getDescription()): '';
-        $queryParameters[] = ('' != $payment->getLang()) ? sprintf('lang=%s', $payment->getLang()): '';
-        $queryParameters[] = (null != $payment->getChannel()) ? sprintf('channel=%s', $payment->getChannel()->getNumber()): '';
+        $queryParameters[] = ('' != $payment->getMerchantId()) ? sprintf('id=%s', rawurlencode($payment->getMerchantId())): '';
+        $queryParameters[] = ('' != $payment->getAmount()) ? sprintf('amount=%.2f', rawurlencode($payment->getAmount())): '';
+        $queryParameters[] = ('' != $payment->getCurrency()) ? sprintf('currency=%s', rawurlencode($payment->getCurrency())): '';
+        $queryParameters[] = ('' != $payment->getDescription()) ? sprintf('description=%s', rawurlencode($payment->getDescription())): '';
+        $queryParameters[] = ('' != $payment->getLang()) ? sprintf('lang=%s', rawurlencode($payment->getLang())): '';
+        $queryParameters[] = (null != $payment->getChannel()) ? sprintf('channel=%s', rawurlencode($payment->getChannel()->getNumber())): '';
         $queryParameters[] = (true === $payment->getChLock()) ? 'ch_lock=1' : 'ch_lock=0';
-        $queryParameters[] = ('' !== $payment->getUrl()) ? sprintf('url=%s', $payment->getUrl()): '';
-        $queryParameters[] = ('' !== $payment->getType()) ? sprintf('type=%s', $payment->getType()): '';
-        $queryParameters[] = ('' != $payment->getButtontext()) ? sprintf('buttontext=%s', $payment->getButtontext()): '';
-        $queryParameters[] = ('' !== $payment->getUrlc()) ? sprintf('URLC=%s', $payment->getUrlc()): '';
-        $queryParameters[] = ('' !== $payment->getControl()) ? sprintf('control=%s', $payment->getControl()): '';
-        $queryParameters[] = ('' != $payment->getFirstname()) ? sprintf('firstname=%s', $payment->getFirstname()): '';
-        $queryParameters[] = ('' != $payment->getLastname()) ? sprintf('lastname=%s', $payment->getLastname()): '';
-        $queryParameters[] = ('' != $payment->getEmail()) ? sprintf('email=%s', $payment->getEmail()): '';
-        $queryParameters[] = ('' != $payment->getStreet()) ? sprintf('street=%s', $payment->getStreet()): '';
-        $queryParameters[] = ('' != $payment->getStreetN1()) ? sprintf('street_n1=%s', $payment->getStreetN1()): '';
-        $queryParameters[] = ('' != $payment->getStreetN2()) ? sprintf('street_n2=%s', $payment->getStreetN2()): '';
-        $queryParameters[] = ('' != $payment->getState()) ? sprintf('state=%s', $payment->getStreetN2()): '';
-        $queryParameters[] = ('' != $payment->getAddr3()) ? sprintf('addr_3=%s', $payment->getAddr3()): '';
-        $queryParameters[] = ('' != $payment->getCity()) ? sprintf('city=%s', $payment->getCity()): '';
-        $queryParameters[] = ('' != $payment->getPostcode()) ? sprintf('postcode=%s', $payment->getPostcode()): '';
-        $queryParameters[] = ('' != $payment->getPhone()) ? sprintf('phone=%s', $payment->getPhone()): '';
-        $queryParameters[] = ('' != $payment->getCountry()) ? sprintf('country=%s', $payment->getCountry()): '';
-        $queryParameters[] = ('' != $payment->getPInfo()) ? sprintf('p_info=%s', $payment->getPInfo()): '';
-        $queryParameters[] = ('' != $payment->getPEmail()) ? sprintf('p_email=%s', $payment->getPEmail()): '';
-        $queryParameters[] = ('' != $payment->getBlickCode()) ? sprintf('blik_code=%s', $payment->getBlickCode()): '';
+        $queryParameters[] = ('' !== $payment->getUrl()) ? sprintf('url=%s', rawurlencode($payment->getUrl())): '';
+        $queryParameters[] = ('' !== $payment->getType()) ? sprintf('type=%s', rawurlencode($payment->getType())): '';
+        $queryParameters[] = ('' != $payment->getButtontext()) ? sprintf('buttontext=%s', rawurlencode($payment->getButtontext())): '';
+        $queryParameters[] = ('' !== $payment->getUrlc()) ? sprintf('URLC=%s', rawurlencode($payment->getUrlc())): '';
+        $queryParameters[] = ('' !== $payment->getControl()) ? sprintf('control=%s', rawurlencode($payment->getControl())): '';
+        $queryParameters[] = ('' != $payment->getFirstname()) ? sprintf('firstname=%s', rawurlencode($payment->getFirstname())): '';
+        $queryParameters[] = ('' != $payment->getLastname()) ? sprintf('lastname=%s', rawurlencode($payment->getLastname())): '';
+        $queryParameters[] = ('' != $payment->getEmail()) ? sprintf('email=%s', rawurlencode($payment->getEmail())): '';
+        $queryParameters[] = ('' != $payment->getStreet()) ? sprintf('street=%s', rawurlencode($payment->getStreet())): '';
+        $queryParameters[] = ('' != $payment->getStreetN1()) ? sprintf('street_n1=%s', rawurlencode($payment->getStreetN1())): '';
+        $queryParameters[] = ('' != $payment->getStreetN2()) ? sprintf('street_n2=%s', rawurlencode($payment->getStreetN2())): '';
+        $queryParameters[] = ('' != $payment->getState()) ? sprintf('state=%s', rawurlencode($payment->getStreetN2())): '';
+        $queryParameters[] = ('' != $payment->getAddr3()) ? sprintf('addr_3=%s', rawurlencode($payment->getAddr3())): '';
+        $queryParameters[] = ('' != $payment->getCity()) ? sprintf('city=%s', rawurlencode($payment->getCity())): '';
+        $queryParameters[] = ('' != $payment->getPostcode()) ? sprintf('postcode=%s', rawurlencode($payment->getPostcode())): '';
+        $queryParameters[] = ('' != $payment->getPhone()) ? sprintf('phone=%s', rawurlencode($payment->getPhone())): '';
+        $queryParameters[] = ('' != $payment->getCountry()) ? sprintf('country=%s', rawurlencode($payment->getCountry())): '';
+        $queryParameters[] = ('' != $payment->getPInfo()) ? sprintf('p_info=%s', rawurlencode($payment->getPInfo())): '';
+        $queryParameters[] = ('' != $payment->getPEmail()) ? sprintf('p_email=%s', rawurlencode($payment->getPEmail())): '';
+        $queryParameters[] = ('' != $payment->getBlickCode()) ? sprintf('blik_code=%s', rawurlencode($payment->getBlickCode())): '';
 
-        return implode('&', array_filter($queryParameters));
+        return (
+            implode(
+                '&',
+                array_filter($queryParameters)
+            )
+        );
 
     }
 
