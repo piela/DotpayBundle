@@ -110,8 +110,10 @@
         <!--
              Payment::channel
         -->
-        <!--property name="channel">
-        </property!-->
+        <property name="channel">
+            <constraint name="NotNull"></constraint>
+            <constraint name="Valid" />
+        </property>
         <!--
              Payment::chLock
         -->
@@ -123,8 +125,10 @@
         <!--
              Payment::chanelGroups
         -->
-        <!--property name="channelGroups">
-        </property!-->
+        <property name="channelGroups">
+            <constraint name="NotNull"></constraint>
+            <constraint name="Valid" />
+        </property>
         <!--
              Payment::url
         -->

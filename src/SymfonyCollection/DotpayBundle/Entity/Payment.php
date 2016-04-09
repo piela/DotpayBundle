@@ -102,7 +102,7 @@ class Payment
      * @ORM\Column(name="url", type="string", length=1000, nullable=true)
      */
     private $url;
-
+  
     /**
      * @var int
      *
